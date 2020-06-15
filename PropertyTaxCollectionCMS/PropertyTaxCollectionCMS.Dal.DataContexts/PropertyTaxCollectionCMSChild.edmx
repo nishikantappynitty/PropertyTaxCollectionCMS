@@ -1,0 +1,1213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PropertyTaxCollectionCMSChildModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HouseMaster">
+          <Key>
+            <PropertyRef Name="houseId" />
+          </Key>
+          <Property Name="houseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="houseNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="houseOwner" Type="varchar" MaxLength="200" />
+          <Property Name="houseOwnerMar" Type="nvarchar" MaxLength="200" />
+          <Property Name="houseOwnerMobile" Type="nvarchar" MaxLength="200" />
+          <Property Name="houseAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="houseLat" Type="nvarchar" MaxLength="500" />
+          <Property Name="houseLong" Type="nvarchar" MaxLength="500" />
+          <Property Name="houseQRCode" Type="nvarchar(max)" />
+          <Property Name="ZoneId" Type="int" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="WardNo" Type="int" />
+          <Property Name="ReferanceId" Type="nvarchar" MaxLength="350" />
+          <Property Name="modified" Type="datetime" />
+          <Property Name="userId" Type="int" />
+          <Property Name="FCMID" Type="varchar" MaxLength="500" />
+          <Property Name="lastModifiedEntry" Type="datetime" />
+          <Property Name="RFIDTagId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Function Name="CollecctionArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="type" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CurrentAllUserLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CurrentAllUserLocationTest1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="CurrentAllUserLocationUserIDWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetAttendenceDetailsTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGarbageCountDetailsHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="day" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetGarbageCountDetailsTotal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetMobile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="areaId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetQrWorkHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+        </Function>
+        <Function Name="HouseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="HouseDetails_ReferanceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReferanceId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="PointDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_1POINT7_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INSERT_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RPT_1point7_questions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_1POINT9_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="INSERT_ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RPT_ONE_POINT_Eight_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_ONE_POINT_Five_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_ONE_POINT_FOUR_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_ONE_POINT_NINE_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_ONE_POINT_SEVEN_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RPT_ONE_POINT_Six_SHOW" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_ALL_Collection_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_area" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_AttendHouseLocationMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="datetime" Mode="In" />
+          <Parameter Name="edate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="SP_Collection_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Dashboard_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_DistanceCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sLat" Type="float" Mode="In" />
+          <Parameter Name="sLong" Type="float" Mode="In" />
+          <Parameter Name="dLat" Type="float" Mode="In" />
+          <Parameter Name="dLong" Type="float" Mode="In" />
+        </Function>
+        <Function Name="SP_DumpYardDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_EmployeeHouseCollectionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_EmployeeSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="from" Type="date" Mode="In" />
+          <Parameter Name="to" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_EmployeeTarget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GarbageCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="appId" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetLiveTracking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_HouseOnMapDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gcDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="ZoneId" Type="int" Mode="In" />
+          <Parameter Name="AreaId" Type="int" Mode="In" />
+          <Parameter Name="WardNo" Type="int" Mode="In" />
+          <Parameter Name="GarbageType" Type="int" Mode="In" />
+          <Parameter Name="FilterType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_HousePointDumpDetails_Scanify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReferenceId" Type="nvarchar" Mode="In" />
+          <Parameter Name="gcType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_HouseScanify" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_HouseScanify_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_HouseScanifyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_IdelTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <Parameter Name="fdate" Type="date" Mode="In" />
+          <Parameter Name="tdate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_Live_Entry_Tracker" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_TotalHouseCollection_Count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gcdate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_UserLatLongDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="typeId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PropertyTaxCollectionCMSChildModelStoreContainer">
+          <EntitySet Name="HouseMaster" EntityType="Self.HouseMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PropertyTaxCollectionCMSChildModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PropertyTaxCollectionCMSChild_Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="CollecctionArea" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.CollecctionArea_Result)">
+          <Parameter Name="type" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CurrentAllUserLocation" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.CurrentAllUserLocation_Result)" />
+          <FunctionImport Name="CurrentAllUserLocationTest1" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.CurrentAllUserLocationTest1_Result)" />
+          <FunctionImport Name="CurrentAllUserLocationUserIDWise" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.CurrentAllUserLocationUserIDWise_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetAttendenceDetailsTotal" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.GetAttendenceDetailsTotal_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGarbageCountDetailsHistory" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.GetGarbageCountDetailsHistory_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="day" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetGarbageCountDetailsTotal" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.GetGarbageCountDetailsTotal_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMobile" ReturnType="Collection(String)">
+          <Parameter Name="areaId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetQrWorkHistory" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.GetQrWorkHistory_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="HouseDetails" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.HouseDetails_Result)" />
+          <FunctionImport Name="HouseDetails_ReferanceId" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.HouseDetails_ReferanceId_Result)">
+          <Parameter Name="ReferanceId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PointDetails" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.PointDetails_Result)" />
+          <FunctionImport Name="RPT_1POINT7_DETAILS">
+          <Parameter Name="INSERT_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_1point7_questions" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_1point7_questions_Result)" />
+          <FunctionImport Name="RPT_1POINT9_DETAILS" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_1POINT9_DETAILS_Result)">
+          <Parameter Name="INSERT_ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RPT_ONE_POINT_Eight_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Eight_SHOW_Result)" />
+          <FunctionImport Name="RPT_ONE_POINT_Five_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Five_SHOW_Result)" />
+          <FunctionImport Name="RPT_ONE_POINT_FOUR_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_FOUR_SHOW_Result)" />
+          <FunctionImport Name="RPT_ONE_POINT_NINE_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_NINE_SHOW_Result)" />
+          <FunctionImport Name="RPT_ONE_POINT_SEVEN_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_SEVEN_SHOW_Result)" />
+          <FunctionImport Name="RPT_ONE_POINT_Six_SHOW" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Six_SHOW_Result)" />
+          <FunctionImport Name="SP_ALL_Collection_Count" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_ALL_Collection_Count_Result)" />
+          <FunctionImport Name="sp_area" ReturnType="Collection(String)" />
+          <FunctionImport Name="SP_AttendHouseLocationMap" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_AttendHouseLocationMap_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="edate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Collection_Count" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_Collection_Count_Result)">
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Dashboard_Details" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_Dashboard_Details_Result)" />
+          <FunctionImport Name="SP_DistanceCount" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_DistanceCount_Result)">
+            <Parameter Name="sLat" Mode="In" Type="Double" />
+            <Parameter Name="sLong" Mode="In" Type="Double" />
+            <Parameter Name="dLat" Mode="In" Type="Double" />
+            <Parameter Name="dLong" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DumpYardDetails" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_DumpYardDetails_Result)" />
+          <FunctionImport Name="SP_EmployeeHouseCollectionType" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_EmployeeHouseCollectionType_Result)" />
+          <FunctionImport Name="SP_EmployeeSummary" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_EmployeeSummary_Result)">
+            <Parameter Name="from" Mode="In" Type="DateTime" />
+            <Parameter Name="to" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_EmployeeTarget" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_EmployeeTarget_Result)">
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GarbageCollection">
+            <Parameter Name="appId" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetLiveTracking" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_GetLiveTracking_Result)" />
+          <FunctionImport Name="SP_HouseOnMapDetails" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_HouseOnMapDetails_Result)">
+            <Parameter Name="gcDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="ZoneId" Mode="In" Type="Int32" />
+            <Parameter Name="AreaId" Mode="In" Type="Int32" />
+            <Parameter Name="WardNo" Mode="In" Type="Int32" />
+            <Parameter Name="GarbageType" Mode="In" Type="Int32" />
+            <Parameter Name="FilterType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HousePointDumpDetails_Scanify" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_HousePointDumpDetails_Scanify_Result)">
+            <Parameter Name="ReferenceId" Mode="In" Type="String" />
+            <Parameter Name="gcType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HouseScanify" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_HouseScanify_Result)">
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HouseScanify_Count" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_HouseScanify_Count_Result)" />
+          <FunctionImport Name="SP_HouseScanifyDetails" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_HouseScanifyDetails_Result)" />
+          <FunctionImport Name="SP_IdelTime" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_IdelTime_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+            <Parameter Name="fdate" Mode="In" Type="DateTime" />
+            <Parameter Name="tdate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Live_Entry_Tracker" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_Live_Entry_Tracker_Result)" />
+          <FunctionImport Name="SP_TotalHouseCollection_Count" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_TotalHouseCollection_Count_Result)">
+          <Parameter Name="gcdate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UserLatLongDetail" ReturnType="Collection(PropertyTaxCollectionCMSChildModel.SP_UserLatLongDetail_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="typeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="HouseMasters" EntityType="PropertyTaxCollectionCMSChildModel.HouseMaster" />
+        </EntityContainer>
+        <ComplexType Name="CollecctionArea_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AreaMar" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="wardId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CurrentAllUserLocation_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="datetime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="userMobileNumber" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="CurrentAllUserLocationTest1_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="datt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="addr" Nullable="true" />
+          <Property Type="String" Name="v" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="lang" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="CurrentAllUserLocationUserIDWise_Result">
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="datetime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="userMobileNumber" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetAttendenceDetailsTotal_Result">
+          <Property Type="DateTime" Name="day" Nullable="true" />
+          <Property Type="Int32" Name="userid" Nullable="true" />
+          <Property Type="Int32" Name="HouseCollection" Nullable="true" />
+          <Property Type="Int32" Name="PointCollection" Nullable="true" />
+          <Property Type="Int32" Name="DumpYardCollection" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetGarbageCountDetailsHistory_Result">
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Int32" Name="GarbageDetailsID" Nullable="true" />
+          <Property Type="Int32" Name="GarbageSubCategoryID" Nullable="true" />
+          <Property Type="String" Name="GarbageSubCategory" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Weight" Nullable="true" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetGarbageCountDetailsTotal_Result">
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" />
+          <Property Type="Int32" Name="GarbageCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetQrWorkHistory_Result">
+          <Property Type="String" Name="Day" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="Int32" Name="HouseCollection" Nullable="true" />
+          <Property Type="Int32" Name="PointCollection" Nullable="true" />
+          <Property Type="Int32" Name="DumpYardCollection" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="HouseDetails_Result">
+          <Property Type="Int32" Name="houseId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="HouseNumber" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="houseLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="houseLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="HouseDetails_ReferanceId_Result">
+          <Property Type="Int32" Name="houseId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="HouseNumber" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="houseLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="houseLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="PointDetails_Result">
+          <Property Type="Int32" Name="gpId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RPT_1point7_questions_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="wardId" Nullable="true" />
+          <Property Type="String" Name="No_Water_Bodies" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="No_drain_nallas" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="No_locations" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="No_outlets" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="RPT_1POINT9_DETAILS_Result">
+          <Property Type="Int32" Name="ANS_ID" Nullable="false" />
+          <Property Type="Int32" Name="INSERT_ID" Nullable="true" />
+          <Property Type="String" Name="QUESTIOND" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TOTAL_COUNT" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_Eight_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_Five_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_FOUR_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_NINE_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_SEVEN_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RPT_ONE_POINT_Six_SHOW_Result">
+          <Property Type="DateTime" Name="insert_date" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="insert_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_ALL_Collection_Count_Result">
+          <Property Type="Int32" Name="C_count" Nullable="true" />
+          <Property Type="Int32" Name="C_user" Nullable="true" />
+          <Property Type="Int32" Name="C_userAtten" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_AttendHouseLocationMap_Result">
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="time" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="vehicleNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseOwnerMobile" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="address" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="type" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_Collection_Count_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="DateTime" Name="fromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_Dashboard_Details_Result">
+          <Property Type="Int32" Name="TodayAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalAttandence" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_DistanceCount_Result">
+          <Property Type="Decimal" Name="Distance_in_KM" Nullable="true" Precision="10" Scale="4" />
+          <Property Type="Decimal" Name="Distance_in_meters" Nullable="true" Precision="10" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="SP_DumpYardDetails_Result">
+          <Property Type="Int32" Name="dyId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="dyLat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="dyLong" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeHouseCollectionType_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="DateTime" Name="TodayDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="inTime" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="Bifur" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecidfied" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeSummary_Result">
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="8" />
+          <Property Type="DateTime" Name="Startdate" Nullable="true" />
+          <Property Type="DateTime" Name="Enddate" Nullable="true" />
+          <Property Type="String" Name="BatteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Totalhousecollection" Nullable="true" />
+          <Property Type="Decimal" Name="Totaldistance" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="Totaldumpyard" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_EmployeeTarget_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="DateTime" Name="fromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="gcTarget" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_GetLiveTracking_Result">
+          <Property Type="Int32" Name="gcId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseOnMapDetails_Result">
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Int32" Name="houseId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="houseNumber" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseOwnerMobile" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="houseAddress" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="garbageType" Nullable="true" />
+          <Property Type="Int32" Name="gcDate" Nullable="true" />
+          <Property Type="String" Name="houseLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="houseLong" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_HousePointDumpDetails_Scanify_Result">
+          <Property Type="Int32" Name="houseId" Nullable="false" />
+          <Property Type="String" Name="ReferanceId" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="NameMar" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Images" Nullable="false" />
+          <Property Type="String" Name="Zone" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="zoneId" Nullable="false" />
+          <Property Type="String" Name="Ward" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="WardNoId" Nullable="false" />
+          <Property Type="String" Name="Area" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="AreaId" Nullable="false" />
+          <Property Type="String" Name="HouseNumber" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="MobileNumber" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Lat" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Long" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseScanify_Result">
+          <Property Type="Int32" Name="qrEMpId" Nullable="false" />
+          <Property Type="String" Name="qrEmpName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="qrEmpNameMar" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="qrEmpLoginId" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="qrEmpPassword" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="qrEmpMobileNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="qrEmpAddress" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
+          <Property Type="String" Name="bloodGroup" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="lastModifyDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="HouseCount" Nullable="true" />
+          <Property Type="Int32" Name="PointCount" Nullable="true" />
+          <Property Type="Int32" Name="DumpCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseScanify_Count_Result">
+          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseLatLongCount" Nullable="true" />
+          <Property Type="Int32" Name="TotalScanHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_HouseScanifyDetails_Result">
+          <Property Type="Int32" Name="TotalHouse" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalHouseUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalPoint" Nullable="true" />
+          <Property Type="Int32" Name="TotalPointUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalPointUpdated_CurrentDay" Nullable="true" />
+          <Property Type="Int32" Name="TotalDump" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpUpdated" Nullable="true" />
+          <Property Type="Int32" Name="TotalDumpUpdated_CurrentDay" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_IdelTime_Result">
+          <Property Type="Int32" Name="userId" Nullable="false" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="date" Nullable="true" />
+          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="7" />
+          <Property Type="String" Name="LastTime" Nullable="true" MaxLength="7" />
+          <Property Type="Int32" Name="IdelTime" Nullable="true" />
+          <Property Type="String" Name="StartAddress" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="StarLat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="StartLog" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_Live_Entry_Tracker_Result">
+          <Property Type="DateTime" Name="gcDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="houseOwner" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="userName" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="SP_TotalHouseCollection_Count_Result">
+          <Property Type="Int32" Name="TotalHouseCount" Nullable="true" />
+          <Property Type="Int32" Name="MixedCount" Nullable="true" />
+          <Property Type="Int32" Name="BifurgatedCount" Nullable="true" />
+          <Property Type="Int32" Name="NotCollected" Nullable="true" />
+          <Property Type="Int32" Name="NotSpecified" Nullable="true" />
+          <Property Type="Decimal" Name="GcWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="DryWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="WetWeightCount" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalGcWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalDryWeightCount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalWetWeightCount" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SP_UserLatLongDetail_Result">
+          <Property Type="Int32" Name="locId" Nullable="false" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="DateTime" Name="datetime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="lat" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="long" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="type" Nullable="true" />
+          <Property Type="String" Name="batteryStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Distnace" Nullable="true" Precision="6" Scale="2" />
+        </ComplexType>
+        <EntityType Name="HouseMaster">
+          <Key>
+            <PropertyRef Name="houseId" />
+          </Key>
+          <Property Name="houseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="houseNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseOwner" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="houseOwnerMar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="houseOwnerMobile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="houseAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseLat" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseLong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="houseQRCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ZoneId" Type="Int32" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="WardNo" Type="Int32" />
+          <Property Name="ReferanceId" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="modified" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="FCMID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="lastModifiedEntry" Type="DateTime" Precision="3" />
+          <Property Name="RFIDTagId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PropertyTaxCollectionCMSChildModelStoreContainer" CdmEntityContainer="PropertyTaxCollectionCMSChild_Entities">
+          <FunctionImportMapping FunctionImportName="CollecctionArea" FunctionName="PropertyTaxCollectionCMSChildModel.Store.CollecctionArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.CollecctionArea_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="AreaMar" ColumnName="AreaMar" />
+                <ScalarProperty Name="wardId" ColumnName="wardId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CurrentAllUserLocation" FunctionName="PropertyTaxCollectionCMSChildModel.Store.CurrentAllUserLocation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.CurrentAllUserLocation_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="userMobileNumber" ColumnName="userMobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CurrentAllUserLocationTest1" FunctionName="PropertyTaxCollectionCMSChildModel.Store.CurrentAllUserLocationTest1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.CurrentAllUserLocationTest1_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datt" ColumnName="datt" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="v" ColumnName="v" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CurrentAllUserLocationUserIDWise" FunctionName="PropertyTaxCollectionCMSChildModel.Store.CurrentAllUserLocationUserIDWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.CurrentAllUserLocationUserIDWise_Result">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="userMobileNumber" ColumnName="userMobileNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetAttendenceDetailsTotal" FunctionName="PropertyTaxCollectionCMSChildModel.Store.GetAttendenceDetailsTotal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.GetAttendenceDetailsTotal_Result">
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="HouseCollection" ColumnName="HouseCollection" />
+                <ScalarProperty Name="PointCollection" ColumnName="PointCollection" />
+                <ScalarProperty Name="DumpYardCollection" ColumnName="DumpYardCollection" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGarbageCountDetailsHistory" FunctionName="PropertyTaxCollectionCMSChildModel.Store.GetGarbageCountDetailsHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.GetGarbageCountDetailsHistory_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="GarbageDetailsID" ColumnName="GarbageDetailsID" />
+                <ScalarProperty Name="GarbageSubCategoryID" ColumnName="GarbageSubCategoryID" />
+                <ScalarProperty Name="GarbageSubCategory" ColumnName="GarbageSubCategory" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetGarbageCountDetailsTotal" FunctionName="PropertyTaxCollectionCMSChildModel.Store.GetGarbageCountDetailsTotal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.GetGarbageCountDetailsTotal_Result">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="GarbageCount" ColumnName="GarbageCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMobile" FunctionName="PropertyTaxCollectionCMSChildModel.Store.GetMobile" />
+          <FunctionImportMapping FunctionImportName="GetQrWorkHistory" FunctionName="PropertyTaxCollectionCMSChildModel.Store.GetQrWorkHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.GetQrWorkHistory_Result">
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="HouseCollection" ColumnName="HouseCollection" />
+                <ScalarProperty Name="PointCollection" ColumnName="PointCollection" />
+                <ScalarProperty Name="DumpYardCollection" ColumnName="DumpYardCollection" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HouseDetails" FunctionName="PropertyTaxCollectionCMSChildModel.Store.HouseDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.HouseDetails_Result">
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="HouseDetails_ReferanceId" FunctionName="PropertyTaxCollectionCMSChildModel.Store.HouseDetails_ReferanceId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.HouseDetails_ReferanceId_Result">
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PointDetails" FunctionName="PropertyTaxCollectionCMSChildModel.Store.PointDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.PointDetails_Result">
+                <ScalarProperty Name="gpId" ColumnName="gpId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_1POINT7_DETAILS" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_1POINT7_DETAILS" />
+          <FunctionImportMapping FunctionImportName="RPT_1point7_questions" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_1point7_questions">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_1point7_questions_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="wardId" ColumnName="wardId" />
+                <ScalarProperty Name="No_Water_Bodies" ColumnName="No_Water_Bodies" />
+                <ScalarProperty Name="No_drain_nallas" ColumnName="No_drain_nallas" />
+                <ScalarProperty Name="No_locations" ColumnName="No_locations" />
+                <ScalarProperty Name="No_outlets" ColumnName="No_outlets" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_1POINT9_DETAILS" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_1POINT9_DETAILS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_1POINT9_DETAILS_Result">
+                <ScalarProperty Name="ANS_ID" ColumnName="ANS_ID" />
+                <ScalarProperty Name="INSERT_ID" ColumnName="INSERT_ID" />
+                <ScalarProperty Name="QUESTIOND" ColumnName="QUESTIOND" />
+                <ScalarProperty Name="TOTAL_COUNT" ColumnName="TOTAL_COUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_Eight_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_Eight_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Eight_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_Five_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_Five_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Five_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_FOUR_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_FOUR_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_FOUR_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_NINE_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_NINE_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_NINE_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_SEVEN_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_SEVEN_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_SEVEN_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RPT_ONE_POINT_Six_SHOW" FunctionName="PropertyTaxCollectionCMSChildModel.Store.RPT_ONE_POINT_Six_SHOW">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.RPT_ONE_POINT_Six_SHOW_Result">
+                <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+                <ScalarProperty Name="insert_id" ColumnName="insert_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ALL_Collection_Count" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_ALL_Collection_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_ALL_Collection_Count_Result">
+                <ScalarProperty Name="C_count" ColumnName="_count" />
+                <ScalarProperty Name="C_user" ColumnName="_user" />
+                <ScalarProperty Name="C_userAtten" ColumnName="_userAtten" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_area" FunctionName="PropertyTaxCollectionCMSChildModel.Store.sp_area" />
+          <FunctionImportMapping FunctionImportName="SP_AttendHouseLocationMap" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_AttendHouseLocationMap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_AttendHouseLocationMap_Result">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="vehicleNumber" ColumnName="vehicleNumber" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Collection_Count" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_Collection_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_Collection_Count_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="inTime" ColumnName="inTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Dashboard_Details" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_Dashboard_Details">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_Dashboard_Details_Result">
+                <ScalarProperty Name="TodayAttandence" ColumnName="TodayAttandence" />
+                <ScalarProperty Name="TotalAttandence" ColumnName="TotalAttandence" />
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DistanceCount" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_DistanceCount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_DistanceCount_Result">
+                <ScalarProperty Name="Distance_in_KM" ColumnName="Distance_in_KM" />
+                <ScalarProperty Name="Distance_in_meters" ColumnName="Distance_in_meters" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DumpYardDetails" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_DumpYardDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_DumpYardDetails_Result">
+                <ScalarProperty Name="dyId" ColumnName="dyId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="dyLat" ColumnName="dyLat" />
+                <ScalarProperty Name="dyLong" ColumnName="dyLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeHouseCollectionType" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_EmployeeHouseCollectionType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_EmployeeHouseCollectionType_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="TodayDate" ColumnName="TodayDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="inTime" ColumnName="inTime" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="Bifur" ColumnName="Bifur" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecidfied" ColumnName="NotSpecidfied" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeSummary" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_EmployeeSummary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_EmployeeSummary_Result">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Startdate" ColumnName="Startdate" />
+                <ScalarProperty Name="Enddate" ColumnName="Enddate" />
+                <ScalarProperty Name="BatteryStatus" ColumnName="BatteryStatus" />
+                <ScalarProperty Name="Totalhousecollection" ColumnName="Totalhousecollection" />
+                <ScalarProperty Name="Totaldistance" ColumnName="Totaldistance" />
+                <ScalarProperty Name="Totaldumpyard" ColumnName="Totaldumpyard" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_EmployeeTarget" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_EmployeeTarget">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_EmployeeTarget_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcTarget" ColumnName="gcTarget" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GarbageCollection" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_GarbageCollection" />
+          <FunctionImportMapping FunctionImportName="SP_GetLiveTracking" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_GetLiveTracking">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_GetLiveTracking_Result">
+                <ScalarProperty Name="gcId" ColumnName="gcId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseOnMapDetails" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_HouseOnMapDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_HouseOnMapDetails_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
+                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
+                <ScalarProperty Name="garbageType" ColumnName="garbageType" />
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HousePointDumpDetails_Scanify" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_HousePointDumpDetails_Scanify">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_HousePointDumpDetails_Scanify_Result">
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameMar" ColumnName="NameMar" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="zoneId" ColumnName="zoneId" />
+                <ScalarProperty Name="Ward" ColumnName="Ward" />
+                <ScalarProperty Name="WardNoId" ColumnName="WardNoId" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseScanify" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_HouseScanify">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_HouseScanify_Result">
+                <ScalarProperty Name="qrEMpId" ColumnName="qrEMpId" />
+                <ScalarProperty Name="qrEmpName" ColumnName="qrEmpName" />
+                <ScalarProperty Name="qrEmpNameMar" ColumnName="qrEmpNameMar" />
+                <ScalarProperty Name="qrEmpLoginId" ColumnName="qrEmpLoginId" />
+                <ScalarProperty Name="qrEmpPassword" ColumnName="qrEmpPassword" />
+                <ScalarProperty Name="qrEmpMobileNumber" ColumnName="qrEmpMobileNumber" />
+                <ScalarProperty Name="qrEmpAddress" ColumnName="qrEmpAddress" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="lastModifyDate" ColumnName="lastModifyDate" />
+                <ScalarProperty Name="HouseCount" ColumnName="HouseCount" />
+                <ScalarProperty Name="PointCount" ColumnName="PointCount" />
+                <ScalarProperty Name="DumpCount" ColumnName="DumpCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseScanify_Count" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_HouseScanify_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_HouseScanify_Count_Result">
+                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
+                <ScalarProperty Name="TotalHouseLatLongCount" ColumnName="TotalHouseLatLongCount" />
+                <ScalarProperty Name="TotalScanHouseCount" ColumnName="TotalScanHouseCount" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HouseScanifyDetails" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_HouseScanifyDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_HouseScanifyDetails_Result">
+                <ScalarProperty Name="TotalHouse" ColumnName="TotalHouse" />
+                <ScalarProperty Name="TotalHouseUpdated" ColumnName="TotalHouseUpdated" />
+                <ScalarProperty Name="TotalHouseUpdated_CurrentDay" ColumnName="TotalHouseUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+                <ScalarProperty Name="TotalPointUpdated" ColumnName="TotalPointUpdated" />
+                <ScalarProperty Name="TotalPointUpdated_CurrentDay" ColumnName="TotalPointUpdated_CurrentDay" />
+                <ScalarProperty Name="TotalDump" ColumnName="TotalDump" />
+                <ScalarProperty Name="TotalDumpUpdated" ColumnName="TotalDumpUpdated" />
+                <ScalarProperty Name="TotalDumpUpdated_CurrentDay" ColumnName="TotalDumpUpdated_CurrentDay" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_IdelTime" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_IdelTime">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_IdelTime_Result">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LastTime" ColumnName="LastTime" />
+                <ScalarProperty Name="IdelTime" ColumnName="IdelTime" />
+                <ScalarProperty Name="StartAddress" ColumnName="StartAddress" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="StarLat" ColumnName="StarLat" />
+                <ScalarProperty Name="StartLog" ColumnName="StartLog" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Live_Entry_Tracker" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_Live_Entry_Tracker">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_Live_Entry_Tracker_Result">
+                <ScalarProperty Name="gcDate" ColumnName="gcDate" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TotalHouseCollection_Count" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_TotalHouseCollection_Count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_TotalHouseCollection_Count_Result">
+                <ScalarProperty Name="TotalHouseCount" ColumnName="TotalHouseCount" />
+                <ScalarProperty Name="MixedCount" ColumnName="MixedCount" />
+                <ScalarProperty Name="BifurgatedCount" ColumnName="BifurgatedCount" />
+                <ScalarProperty Name="NotCollected" ColumnName="NotCollected" />
+                <ScalarProperty Name="NotSpecified" ColumnName="NotSpecified" />
+                <ScalarProperty Name="GcWeightCount" ColumnName="GcWeightCount" />
+                <ScalarProperty Name="DryWeightCount" ColumnName="DryWeightCount" />
+                <ScalarProperty Name="WetWeightCount" ColumnName="WetWeightCount" />
+                <ScalarProperty Name="TotalGcWeightCount" ColumnName="TotalGcWeightCount" />
+                <ScalarProperty Name="TotalDryWeightCount" ColumnName="TotalDryWeightCount" />
+                <ScalarProperty Name="TotalWetWeightCount" ColumnName="TotalWetWeightCount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UserLatLongDetail" FunctionName="PropertyTaxCollectionCMSChildModel.Store.SP_UserLatLongDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.SP_UserLatLongDetail_Result">
+                <ScalarProperty Name="locId" ColumnName="locId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="batteryStatus" ColumnName="batteryStatus" />
+                <ScalarProperty Name="Distnace" ColumnName="Distnace" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="HouseMasters">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSChildModel.HouseMaster">
+              <MappingFragment StoreEntitySet="HouseMaster">
+                <ScalarProperty Name="RFIDTagId" ColumnName="RFIDTagId" />
+                <ScalarProperty Name="lastModifiedEntry" ColumnName="lastModifiedEntry" />
+                <ScalarProperty Name="FCMID" ColumnName="FCMID" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
+                <ScalarProperty Name="ReferanceId" ColumnName="ReferanceId" />
+                <ScalarProperty Name="WardNo" ColumnName="WardNo" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="houseQRCode" ColumnName="houseQRCode" />
+                <ScalarProperty Name="houseLong" ColumnName="houseLong" />
+                <ScalarProperty Name="houseLat" ColumnName="houseLat" />
+                <ScalarProperty Name="houseAddress" ColumnName="houseAddress" />
+                <ScalarProperty Name="houseOwnerMobile" ColumnName="houseOwnerMobile" />
+                <ScalarProperty Name="houseOwnerMar" ColumnName="houseOwnerMar" />
+                <ScalarProperty Name="houseOwner" ColumnName="houseOwner" />
+                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+                <ScalarProperty Name="houseId" ColumnName="houseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

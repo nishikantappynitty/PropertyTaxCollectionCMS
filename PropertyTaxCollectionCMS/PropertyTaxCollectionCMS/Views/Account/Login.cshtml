@@ -1,0 +1,173 @@
+﻿@model  PropertyTaxCollectionCMS.Bll.ViewModels.Master.EmployeeVM  
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="#">
+    @*<meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">*@
+    <meta name="author" content="#">
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/Content/theme-assets/assets/images/login/favicon.png" type="image/png">
+
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-assets/bower_components/bootstrap/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-assets/assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-assets/assets/icon/icofont/css/icofont.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/theme-assets/assets/css/style.css">
+    <style>
+        .text-inverse {
+            color: #a00155 !important;
+        }
+
+        .text-danger {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="fix-menu" style="background-color: #a00155;">
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <section class="login-block" style="background-size:100% 660px">
+        <!-- Container-fluid starts -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <form class="md-float-material form-material">
+
+                            @*<div class="text-center">
+                                <img src="~/Content/theme-assets/assets/images/login/glass_icon.png" alt="logo.png" style="height:50px;width:auto">
+                                <h5 style="color:white;padding-top:5px;font-size:18px">Liquor Digital Token</h5>
+                                <p style="color:white; padding-top:5px;font-size:10px">Purchase avoid crowd</p>
+                            </div>*@
+                            <div class="auth-box card">
+                                <div class="card-block">
+                                    <div class="row m-b-20">
+                                        <div class="col-md-12">
+                                            <h4 class="text-center" style="font-weight:600">LOGIN</h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-primary">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger", style = "margin-bottom:-15px;display:block;font-size:12px;" })
+                                    </div>
+                                    <div class="form-group form-primary">
+
+                                        @Html.TextBoxFor(model => model.ADUM_LOGIN_ID, new { @class = "form-control form-control-sm", style = "border-radius: 5px;", required = "required", placeholder = "Login Id", type = "text" })
+                                        <span class="form-bar"></span><span id="err_loginid" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group form-primary">
+                                        @Html.TextBoxFor(model => model.ADUM_PASSWORD, new { @class = "form-control form-control-sm", style = "border-radius: 5px;", required = "required", placeholder = "Password", type = "password" })
+                                        <span class="form-bar"></span><span id="err_pwd" class="text-danger"></span>
+                                    </div>
+                                    <div class="row m-t-25 text-left">
+                                        <div class="col-12">
+                                            <div class="checkbox-fade fade-in-primary d-">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                    <span class="text-inverse" style="font-weight:600">Remember me</span>
+                                                </label>
+                                            </div>
+                                            @*<div class="forgot-phone text-right f-right" style="color:#a00155">
+                                                <a href="/Account/Register" class="text-right f-w-600" style="color:#a00155;text-decoration:underline"> Liquor Shop Registration </a>
+                                            </div>*@
+                                        </div>
+                                    </div>
+                                    <div class="row m-t-30">
+                                        <div class="col-md-12">
+                                            <button type="submit" style="border-radius: 5px;" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+
+                    <!-- end of form -->
+                    <div class="" style="color:white;position:fixed;padding:7px;bottom:0;right:0;max-width:450px;z-index:999;">
+                        Powered by <a style="color:white" target="new" href="http://www.appynitty.com/">Appynitty Communications</a>
+                    </div>
+                </div>
+                <!-- end of col-sm-12 -->
+                
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
+
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/jquery/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/popper.js/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/modernizr/js/modernizr.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/modernizr/js/css-scrollbars.js"></script>
+    <!-- i18next.min.js -->
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/i18next/js/i18next.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+    <script type="text/javascript" src="~/Content/theme-assets/assets/js/common-pages.js"></script>
+    <script>
+        $('button[type="submit"]').click(function () {
+            if ($.trim($("#ADUM_LOGIN_ID").val()) == '') {
+                $("#err_loginid").html("Login Id is required").delay(2000).show().fadeOut('slow');
+                $('#ADUM_LOGIN_ID').focus();
+                return false;
+            }
+            if ($.trim($("#ADUM_PASSWORD").val()) == '') {
+                $("#err_pwd").html("Password is required").delay(2000).show().fadeOut('slow');
+                $('#ADUM_PASSWORD').focus();
+                return false;
+            }
+        })
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+</body>
+</html>

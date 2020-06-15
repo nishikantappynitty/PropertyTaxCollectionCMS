@@ -1,0 +1,202 @@
+﻿@model PropertyTaxCollectionCMS.Bll.ViewModels.Master.EmployeeVM
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/theme-assets/assets/pages/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+<link href="~/Content/theme-assets/assets/pages/jquery.filer/css/jquery.filer.css" rel="stylesheet" />
+<style>
+    .textarea {
+        height: 130px;
+    }
+</style>
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-header start -->
+            <div class="page-header">
+                <div class="row align-items-end">
+                    <div class="col-lg-8">
+                        <div class="page-header-title">
+                            <div class="d-inline">
+                                <h4>Employee Registration</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="page-header-breadcrumb">
+                            <ul class="breadcrumb-title">
+                                <li class="breadcrumb-item">
+                                    <a href="index-1.htm"> <i class="feather icon-home"></i> </a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="#">Master</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="#">Employee</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Employee", "Master", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ADUM_USER_CODE);
+
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <!-- Input Grid card start -->
+                            <div class="card">
+
+                                <div class="card-block">
+                                    <h4 class="sub-title">Add Employee</h4>
+                                    <form>
+                                        <div class="form-group row">
+                                            
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">User Name</label>
+                                                @Html.TextBoxFor(model => model.ADUM_USER_NAME, new { @class = "form-control", required = "required", placeholder = "User Name Here", type = "text" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Login Id</label>
+                                                @Html.TextBoxFor(model => model.ADUM_LOGIN_ID, new { @class = "form-control", required = "required", placeholder = "Login Id Here", type = "text" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Password</label>
+                                                @Html.TextBoxFor(model => model.ADUM_PASSWORD, new { @class = "form-control", required = "required", placeholder = "Password Here", type = "password" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Employee No</label>
+                                                @Html.TextBoxFor(model => model.ADUM_EMPLOYEE_ID, new { @class = "form-control", required = "required", placeholder = "Employee No Here", type = "text" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Designation</label>
+                                                @Html.TextBoxFor(model => model.ADUM_DESIGNATION, new { @class = "form-control", required = "required", placeholder = "Designation Here", type = "text" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Mobile</label>
+                                                @Html.TextBoxFor(model => model.ADUM_MOBILE, new { @class = "form-control", required = "required", placeholder = "Mobile Here", type = "text" })
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Email</label>
+                                                @Html.TextBoxFor(model => model.ADUM_EMAIL, new { @class = "form-control", required = "required", placeholder = "Email Here", type = "text" })
+                                            </div>
+
+
+
+                                            @*<div class="col-sm-6">
+                                                @Html.LabelFor(m => m.State, new { @class = "col-form-label" })
+                                                @Html.DropDownListFor(model => model.State, Model.StateList, new { @class = "form-control", required = "required" })
+                                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                                            </div>*@
+
+                                            <div class="col-sm-3">
+                                                <br />
+                                                <br />
+                                                @Html.CheckBox("IS_ACTIVE", new { @class = "checkbox-color checkbox-default", type = "checkbox" })
+                                                <label class="col-form-label">Is Active</label>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label class="col-form-label">Profile Image</label>
+                                                <div class="form-control card-block">
+                                                    <div class="sub-title">Image Upload</div>
+                                                    <div>
+                                                        @if (Model.PROFILE_IMAGE == null)
+                                                        { <img src="~/Images/default-profile.png" id="PROFILE_IMAGE" height="100" width="90" style="border:solid" />}
+                                                        else
+                                                        {
+                                                            <img src=@Model.PROFILE_IMAGE id="PROFILE_IMAGE" height="100" width="90" style="border:solid" />
+                                                        }
+                                                    </div>
+                                                    <br />
+                                                    <input type="file" name="file" id="file" value="@Model.PROFILE_IMAGE" onchange="show(this)">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <br />
+                                            <button type="submit" id="btnSubmit" class="btn btn-custom">Submit</button>
+                                            <a href="EmployeeList" type="button" class="btn btn-custom">Cancel</a>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Input Grid card end -->
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+    <!-- Main-body end -->
+</div>
+
+
+<script src="~/Content/theme-assets/assets/pages/jquery.filer/js/jquery.filer.min.js"></script>
+<script src="~/Content/theme-assets/assets/pages/filer/custom-filer.js"></script>
+<script src="~/Content/theme-assets/assets/pages/filer/jquery.fileuploads.init.js"></script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+<script type="text/javascript">
+
+
+    @*var profileImage = @Html.Raw(Json.Encode(Model.PROFILE_IMAGE));
+    alert(profileImage);*@
+    //$('#btnSubmit').click(function () {
+
+    //    var srcc= $('#PROFILE_IMAGE').attr('src');
+    //    $('#file').attr('value',src);
+
+    //    return false;
+    //   var src = $(this).find('img').attr('src');
+
+
+    //  //  $('#file').attr('value', e.target.result);
+    //})
+
+    console.log($('input #file').html);
+
+    console.log(jQuery('input[name="file"]'));
+
+    function show(input) {
+        console.log(input);
+          if (input.files && input.files[0]) {
+          var filerdr = new FileReader();
+          filerdr.onload = function (e) {
+              $('#PROFILE_IMAGE').attr('src', e.target.result);
+
+          }
+          filerdr.readAsDataURL(input.files[0]);
+       }
+    }
+</script>
+
+
+
+

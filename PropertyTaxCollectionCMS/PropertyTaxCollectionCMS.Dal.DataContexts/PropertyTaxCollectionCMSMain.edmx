@@ -1,0 +1,1150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PropertyTaxCollectionCMSMain_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AD_CITY_MST">
+          <Key>
+            <PropertyRef Name="CITY_ID" />
+          </Key>
+          <Property Name="CITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY" Type="varchar" MaxLength="50" />
+          <Property Name="STATE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AD_CLIENT_DETAIL_MST">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_NAME" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CLIENT_TITLE" Type="varchar" MaxLength="10" />
+          <Property Name="C_FIRST_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="C_MIDDLE_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="C_LAST_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="C_DOB" Type="date" />
+          <Property Name="LOCATION_ID" Type="int" />
+          <Property Name="TALUKA_ID" Type="int" />
+          <Property Name="AD_DISTRICT_ID" Type="int" />
+          <Property Name="CITY_ID" Type="int" />
+          <Property Name="STATE_ID" Type="int" />
+          <Property Name="COUNTRY_ID" Type="int" />
+          <Property Name="COMPANY_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="COM_ADD1" Type="varchar" MaxLength="300" />
+          <Property Name="COM_ADD2" Type="varchar" MaxLength="300" />
+          <Property Name="SMS_PROVIDER_ID" Type="int" Nullable="false" />
+          <Property Name="REG_DATE" Type="datetime" Nullable="false" />
+          <Property Name="EXP_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MOBILE_NO" Type="varchar" MaxLength="11" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="150" />
+          <Property Name="CITY" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="AD_CLIENT_MODULE">
+          <Key>
+            <PropertyRef Name="AD_CLIENT_MODULE_ID" />
+          </Key>
+          <Property Name="AD_CLIENT_MODULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="CLIENT_ID" Type="int" Nullable="false" />
+          <Property Name="MODULE_VALUE" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_MST">
+          <Key>
+            <PropertyRef Name="ADMM_MODULE_ID" />
+          </Key>
+          <Property Name="ADMM_MODULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMM_MODULE_CODE" Type="nvarchar" MaxLength="15" />
+          <Property Name="ADMM_MODULE_NAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ADMM_STATUS" Type="bit" Nullable="false" />
+          <Property Name="ADMM_MOD_SOURCE" Type="nvarchar(max)" />
+          <Property Name="SEQ_NO" Type="int" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="DISPLAY_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="IMG_NORMAL" Type="nvarchar" MaxLength="250" />
+          <Property Name="IMG_ACTIVE" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_OBJECT">
+          <Key>
+            <PropertyRef Name="ADMO_OBJECT_ID" />
+          </Key>
+          <Property Name="ADMO_OBJECT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMO_OBJECT_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="ADMM_MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="ADMO_OBJECT_TYPE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ADMO_STATUS" Type="bit" Nullable="false" />
+          <Property Name="ADMO_SOURCE" Type="varchar(max)" />
+          <Property Name="ADMO_DIS_SRNO" Type="int" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="ADMO_DISPLAY_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMG_NORMAL" Type="nvarchar" MaxLength="250" />
+          <Property Name="IMG_ACTIVE" Type="nvarchar" MaxLength="250" />
+          <Property Name="bireport_file" Type="varchar" MaxLength="300" />
+          <Property Name="TOOLTIP_DESCIP" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_OBJECT_CONTROL">
+          <Key>
+            <PropertyRef Name="ADMOC_CONTROL_ID" />
+          </Key>
+          <Property Name="ADMOC_CONTROL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="ADMO_OBJECT_ID" Type="int" Nullable="false" />
+          <Property Name="CONTROL_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="CONTROL_TYPE" Type="varchar" MaxLength="10" />
+          <Property Name="CONTROL_SOURCE" Type="varchar(max)" />
+          <Property Name="CONTROL_STATUS" Type="bit" Nullable="false" />
+          <Property Name="DISPLAY_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="IMG_NORMAL" Type="nvarchar" MaxLength="250" />
+          <Property Name="IMG_ACTIVE" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="AD_STATE_MST">
+          <Key>
+            <PropertyRef Name="STATE_ID" />
+          </Key>
+          <Property Name="STATE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="COUNTRY_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="AD_TALUKA_MST">
+          <Key>
+            <PropertyRef Name="TALUKA_ID" />
+          </Key>
+          <Property Name="TALUKA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TALUKA_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DISTRICT_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_USER_LOG_MST">
+          <Key>
+            <PropertyRef Name="TRNO" />
+          </Key>
+          <Property Name="TRNO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERVER_ID" Type="tinyint" />
+          <Property Name="APP_ID" Type="int" />
+          <Property Name="ADUM_USER_CODE" Type="int" />
+          <Property Name="ADUM_USER_ID" Type="varchar" MaxLength="200" />
+          <Property Name="LOGIN_TIME" Type="datetime" />
+          <Property Name="LOGOUT_TIME" Type="datetime" />
+          <Property Name="LOGIN_STATUS" Type="bit" />
+          <Property Name="LAST_UPDATE" Type="datetime" />
+          <Property Name="IP_ADDRESS" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="AD_USER_MODULE">
+          <Key>
+            <PropertyRef Name="AD_USER_MODULE_ID" />
+          </Key>
+          <Property Name="AD_USER_MODULE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMO_OBJECT_ID" Type="int" Nullable="false" />
+          <Property Name="ADUM_USER_CODE" Type="int" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="int" Nullable="false" />
+          <Property Name="APP_ID" Type="int" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_USER_MST">
+          <Key>
+            <PropertyRef Name="ADUM_USER_CODE" />
+          </Key>
+          <Property Name="ADUM_USER_CODE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SERVER_ID" Type="tinyint" />
+          <Property Name="APP_ID" Type="int" Nullable="false" />
+          <Property Name="ADUM_USER_ID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ADUM_USER_NAME" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ADUM_LOGIN_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADUM_PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADUM_EMPLOYEE_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADUM_DESIGNATION" Type="varchar" MaxLength="50" />
+          <Property Name="ADUM_MOBILE" Type="varchar" MaxLength="15" />
+          <Property Name="ADUM_EMAIL" Type="varchar" MaxLength="200" />
+          <Property Name="LOCAL_USER_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="PROFILE_IMAGE" Type="nvarchar" MaxLength="100" />
+          <Property Name="ADUM_FRDT" Type="datetime" />
+          <Property Name="ADUM_TODT" Type="datetime" />
+          <Property Name="ADUM_STATUS" Type="bit" />
+          <Property Name="UPDATE_FLAG" Type="bit" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" />
+          <Property Name="AD_USER_TYPE_ID" Type="int" />
+          <Property Name="MOBILE_ID" Type="nvarchar" MaxLength="100" />
+          <Property Name="IS_ACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="AD_USER_ROLE_MST">
+          <Key>
+            <PropertyRef Name="ADURM_ID" />
+          </Key>
+          <Property Name="ADURM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APP_ID" Type="int" Nullable="false" />
+          <Property Name="ADUM_USER_CODE" Type="int" Nullable="false" />
+          <Property Name="ADMOC_CONTROL_ID" Type="int" Nullable="false" />
+          <Property Name="ADURM_VIEW" Type="bit" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="smalldatetime" Nullable="false" />
+          <Property Name="ADMO_OBJECT_ID" Type="int" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADMIN_CONTACT">
+          <Key>
+            <PropertyRef Name="ADMIN_ID" />
+          </Key>
+          <Property Name="ADMIN_ID" Type="int" Nullable="false" />
+          <Property Name="POSITION" Type="nvarchar" MaxLength="500" />
+          <Property Name="MOBILE_NO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="APP_CONNECTION">
+          <Key>
+            <PropertyRef Name="AppConnectionId" />
+          </Key>
+          <Property Name="AppConnectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="DataSource" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InitialCatalog" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APP_DETAILS">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="AppId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AppName_mar" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="int" />
+          <Property Name="Tehsil" Type="int" />
+          <Property Name="District" Type="int" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="website" Type="nvarchar" MaxLength="100" />
+          <Property Name="Android_GCM_pushNotification_Key" Type="varchar" MaxLength="150" />
+          <Property Name="IsProduction" Type="bit" />
+          <Property Name="baseImageUrlCMS" Type="nvarchar" MaxLength="255" />
+          <Property Name="baseImageUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="AboutThumbnailURL" Type="nvarchar" MaxLength="1000" />
+          <Property Name="AboutAppynity" Type="nvarchar" MaxLength="50" />
+          <Property Name="AboutTeamDetail" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactUsTeamMember" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeSplash" Type="nvarchar" MaxLength="50" />
+          <Property Name="FAQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactUs" Type="nvarchar" MaxLength="50" />
+          <Property Name="basePath" Type="nvarchar" MaxLength="40" />
+          <Property Name="yoccContact" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nchar" MaxLength="20" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="Latitude" Type="nvarchar(max)" />
+          <Property Name="Logitude" Type="nvarchar(max)" />
+          <Property Name="UserProfile" Type="nvarchar" MaxLength="200" />
+          <Property Name="Collection" Type="nvarchar" MaxLength="200" />
+          <Property Name="HouseQRCode" Type="nvarchar" MaxLength="220" />
+          <Property Name="PointQRCode" Type="nvarchar" MaxLength="220" />
+          <Property Name="HousePDF" Type="nvarchar" MaxLength="550" />
+          <Property Name="PointPDF" Type="nvarchar" MaxLength="550" />
+          <Property Name="Grampanchayat_Pro" Type="nvarchar(max)" />
+          <Property Name="AppVersion" Type="nvarchar" MaxLength="500" />
+          <Property Name="ForceUpdate" Type="bit" />
+          <Property Name="APIHit" Type="int" />
+          <Property Name="NewFeatures" Type="bit" />
+          <Property Name="ReportEnable" Type="bit" />
+          <Property Name="DumpYardQRCode" Type="nvarchar" MaxLength="250" />
+          <Property Name="DumpYardPDF" Type="nvarchar" MaxLength="250" />
+          <Property Name="GramPanchyatAppID" Type="int" />
+          <Property Name="YoccClientID" Type="int" />
+          <Property Name="YoccFeddbackLink" Type="nvarchar" MaxLength="250" />
+          <Property Name="YoccDndLink" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LanguageId" Type="int" />
+        </EntityType>
+        <EntityType Name="DEVICE_DETAILS">
+          <Key>
+            <PropertyRef Name="DEVICE_DETAIL_Id" />
+          </Key>
+          <Property Name="DEVICE_DETAIL_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DEVICE_ID" Type="nvarchar(max)" />
+          <Property Name="FCM_ID" Type="nvarchar(max)" />
+          <Property Name="DEVICE_TYPE" Type="nvarchar" MaxLength="50" />
+          <Property Name="APP_ID" Type="int" />
+          <Property Name="ADUM_USER_CODE" Type="int" />
+          <Property Name="INSTALL_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE_ATTENDANCE">
+          <Key>
+            <PropertyRef Name="DA_ID" />
+          </Key>
+          <Property Name="DA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APP_ID" Type="int" />
+          <Property Name="ADUM_USER_CODE" Type="int" />
+          <Property Name="START_LAT" Type="nvarchar" MaxLength="500" />
+          <Property Name="START_LONG" Type="nvarchar" MaxLength="500" />
+          <Property Name="END_LAT" Type="nchar" MaxLength="10" />
+          <Property Name="END_LONG" Type="nchar" MaxLength="10" />
+          <Property Name="DA_START_DATETIME" Type="datetime" />
+          <Property Name="DA_END_DATETIME" Type="datetime" />
+          <Property Name="VT_ID" Type="nchar" MaxLength="10" />
+          <Property Name="DA_START_NOTE" Type="nvarchar(max)" />
+          <Property Name="DA_END_NOTE" Type="nvarchar(max)" />
+          <Property Name="VEHICLE_NUMBER" Type="nvarchar" MaxLength="50" />
+          <Property Name="BATTERY_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="TOTAL_KM" Type="int" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GOOGLE_API_HIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="API_KEY" Type="nvarchar(max)" />
+          <Property Name="EMAIL_ID" Type="nvarchar(max)" />
+          <Property Name="HIT_DATE" Type="date" />
+          <Property Name="HIT_COUNT" Type="int" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOC_ID" />
+          </Key>
+          <Property Name="LOC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APP_ID" Type="int" />
+          <Property Name="ADUM_USER_CODE" Type="int" />
+          <Property Name="LOC_DATE_TIME" Type="datetime" />
+          <Property Name="LAT" Type="nvarchar" MaxLength="500" />
+          <Property Name="LONG" Type="nvarchar" MaxLength="500" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" />
+          <Property Name="Area" Type="nvarchar" MaxLength="500" />
+          <Property Name="LOC_TYPE" Type="int" />
+          <Property Name="HOUSEID" Type="int" />
+          <Property Name="BATTERY_STATUS" Type="varchar" MaxLength="20" />
+          <Property Name="DISTANCE" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="IS_OFFLINE" Type="bit" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TAX_CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="TCAT_ID" />
+          </Key>
+          <Property Name="TCAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCAT_TYPE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TAX_COLLECTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TC_ID" />
+          </Key>
+          <Property Name="TC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCAT_ID" Type="int" Nullable="false" />
+          <Property Name="APP_ID" Type="int" Nullable="false" />
+          <Property Name="RECIPT_NO" Type="varchar" MaxLength="50" />
+          <Property Name="TPAY_ID" Type="int" />
+          <Property Name="TOTAL_AMOUNT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RECEIVED_AMOUNT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="REMAINING_AMOUNT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PAYMENT_DATE" Type="datetime" />
+          <Property Name="HOUSEID" Type="int" Nullable="false" />
+          <Property Name="EMP_LAT" Type="nvarchar" MaxLength="500" />
+          <Property Name="EMP_LONG" Type="nvarchar" MaxLength="500" />
+          <Property Name="ADUM_USER_CODE" Type="int" />
+          <Property Name="RECEIVER_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="RECEIVER_SIGNATURE_IMAGE" Type="nvarchar(max)" />
+          <Property Name="ADDRESS" Type="nvarchar(max)" />
+          <Property Name="REMINDER_NEW_DATE" Type="datetime" />
+          <Property Name="CHEQUE_NO" Type="varchar" MaxLength="50" />
+          <Property Name="CHEQUE_DATE" Type="datetime" />
+          <Property Name="CHEQUE_BANK_NAME" Type="varchar" MaxLength="100" />
+          <Property Name="CHEQUE_IMAGE" Type="nvarchar(max)" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TAX_PAYMENT_TYPE">
+          <Key>
+            <PropertyRef Name="TPAY_ID" />
+          </Key>
+          <Property Name="TPAY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TPAY_TYPE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="PropertyTaxCollectionCMSMain_ModelStoreContainer">
+          <EntitySet Name="AD_CITY_MST" EntityType="Self.AD_CITY_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_CLIENT_DETAIL_MST" EntityType="Self.AD_CLIENT_DETAIL_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_CLIENT_MODULE" EntityType="Self.AD_CLIENT_MODULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_MODULE_MST" EntityType="Self.AD_MODULE_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_MODULE_OBJECT" EntityType="Self.AD_MODULE_OBJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_MODULE_OBJECT_CONTROL" EntityType="Self.AD_MODULE_OBJECT_CONTROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_STATE_MST" EntityType="Self.AD_STATE_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_TALUKA_MST" EntityType="Self.AD_TALUKA_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER_LOG_MST" EntityType="Self.AD_USER_LOG_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER_MODULE" EntityType="Self.AD_USER_MODULE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER_MST" EntityType="Self.AD_USER_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AD_USER_ROLE_MST" EntityType="Self.AD_USER_ROLE_MST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADMIN_CONTACT" EntityType="Self.ADMIN_CONTACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APP_CONNECTION" EntityType="Self.APP_CONNECTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APP_DETAILS" EntityType="Self.APP_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DEVICE_DETAILS" EntityType="Self.DEVICE_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE_ATTENDANCE" EntityType="Self.EMPLOYEE_ATTENDANCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GOOGLE_API_HIT" EntityType="Self.GOOGLE_API_HIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAX_CATEGORY_TYPE" EntityType="Self.TAX_CATEGORY_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAX_COLLECTION_DETAIL" EntityType="Self.TAX_COLLECTION_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAX_PAYMENT_TYPE" EntityType="Self.TAX_PAYMENT_TYPE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PropertyTaxCollectionCMSMain_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AD_CITY_MST">
+          <Key>
+            <PropertyRef Name="CITY_ID" />
+          </Key>
+          <Property Name="CITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STATE_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AD_CLIENT_DETAIL_MST">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_NAME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLIENT_TITLE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="C_FIRST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="C_MIDDLE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_LAST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="C_DOB" Type="DateTime" Precision="0" />
+          <Property Name="LOCATION_ID" Type="Int32" />
+          <Property Name="TALUKA_ID" Type="Int32" />
+          <Property Name="AD_DISTRICT_ID" Type="Int32" />
+          <Property Name="CITY_ID" Type="Int32" />
+          <Property Name="STATE_ID" Type="Int32" />
+          <Property Name="COUNTRY_ID" Type="Int32" />
+          <Property Name="COMPANY_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="COM_ADD1" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="COM_ADD2" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SMS_PROVIDER_ID" Type="Int32" Nullable="false" />
+          <Property Name="REG_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EXP_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MOBILE_NO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_CLIENT_MODULE">
+          <Key>
+            <PropertyRef Name="AD_CLIENT_MODULE_ID" />
+          </Key>
+          <Property Name="AD_CLIENT_MODULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="MODULE_VALUE" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_MST">
+          <Key>
+            <PropertyRef Name="ADMM_MODULE_ID" />
+          </Key>
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMM_MODULE_CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ADMM_MODULE_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADMM_STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="ADMM_MOD_SOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEQ_NO" Type="Int32" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DISPLAY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMG_NORMAL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IMG_ACTIVE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_OBJECT">
+          <Key>
+            <PropertyRef Name="ADMO_OBJECT_ID" />
+          </Key>
+          <Property Name="ADMO_OBJECT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMO_OBJECT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADMO_OBJECT_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADMO_STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="ADMO_SOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ADMO_DIS_SRNO" Type="Int32" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ADMO_DISPLAY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMG_NORMAL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IMG_ACTIVE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="bireport_file" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="TOOLTIP_DESCIP" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AD_MODULE_OBJECT_CONTROL">
+          <Key>
+            <PropertyRef Name="ADMOC_CONTROL_ID" />
+          </Key>
+          <Property Name="ADMOC_CONTROL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADMO_OBJECT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CONTROL_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CONTROL_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CONTROL_SOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CONTROL_STATUS" Type="Boolean" Nullable="false" />
+          <Property Name="DISPLAY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IMG_NORMAL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IMG_ACTIVE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AD_STATE_MST">
+          <Key>
+            <PropertyRef Name="STATE_ID" />
+          </Key>
+          <Property Name="STATE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COUNTRY_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AD_TALUKA_MST">
+          <Key>
+            <PropertyRef Name="TALUKA_ID" />
+          </Key>
+          <Property Name="TALUKA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TALUKA_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRICT_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AD_USER_LOG_MST">
+          <Key>
+            <PropertyRef Name="TRNO" />
+          </Key>
+          <Property Name="TRNO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERVER_ID" Type="Byte" />
+          <Property Name="APP_ID" Type="Int32" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" />
+          <Property Name="ADUM_USER_ID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LOGIN_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LOGOUT_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LOGIN_STATUS" Type="Boolean" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+          <Property Name="IP_ADDRESS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AD_USER_MODULE">
+          <Key>
+            <PropertyRef Name="AD_USER_MODULE_ID" />
+          </Key>
+          <Property Name="AD_USER_MODULE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMO_OBJECT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" />
+          <Property Name="APP_ID" Type="Int32" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="AD_USER_MST">
+          <Key>
+            <PropertyRef Name="ADUM_USER_CODE" />
+          </Key>
+          <Property Name="ADUM_USER_CODE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SERVER_ID" Type="Byte" />
+          <Property Name="APP_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADUM_USER_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADUM_USER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADUM_LOGIN_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ADUM_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADUM_EMPLOYEE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADUM_DESIGNATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADUM_MOBILE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ADUM_EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LOCAL_USER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PROFILE_IMAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ADUM_FRDT" Type="DateTime" Precision="3" />
+          <Property Name="ADUM_TODT" Type="DateTime" Precision="3" />
+          <Property Name="ADUM_STATUS" Type="Boolean" />
+          <Property Name="UPDATE_FLAG" Type="Boolean" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="0" />
+          <Property Name="AD_USER_TYPE_ID" Type="Int32" />
+          <Property Name="MOBILE_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACTIVE" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AD_USER_ROLE_MST">
+          <Key>
+            <PropertyRef Name="ADURM_ID" />
+          </Key>
+          <Property Name="ADURM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" Nullable="false" />
+          <Property Name="ADMOC_CONTROL_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADURM_VIEW" Type="Boolean" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ADMO_OBJECT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ADMM_MODULE_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADMIN_CONTACT">
+          <Key>
+            <PropertyRef Name="ADMIN_ID" />
+          </Key>
+          <Property Name="ADMIN_ID" Type="Int32" Nullable="false" />
+          <Property Name="POSITION" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MOBILE_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="APP_CONNECTION">
+          <Key>
+            <PropertyRef Name="AppConnectionId" />
+          </Key>
+          <Property Name="AppConnectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="DataSource" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InitialCatalog" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APP_DETAILS">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="AppId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AppName_mar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="Tehsil" Type="Int32" />
+          <Property Name="District" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Android_GCM_pushNotification_Key" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IsProduction" Type="Boolean" />
+          <Property Name="baseImageUrlCMS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="baseImageUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AboutThumbnailURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="AboutAppynity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AboutTeamDetail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactUsTeamMember" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomeSplash" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactUs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="basePath" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="yoccContact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logitude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserProfile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Collection" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HouseQRCode" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="PointQRCode" Type="String" MaxLength="220" FixedLength="false" Unicode="true" />
+          <Property Name="HousePDF" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="PointPDF" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="Grampanchayat_Pro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AppVersion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ForceUpdate" Type="Boolean" />
+          <Property Name="APIHit" Type="Int32" />
+          <Property Name="NewFeatures" Type="Boolean" />
+          <Property Name="ReportEnable" Type="Boolean" />
+          <Property Name="DumpYardQRCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DumpYardPDF" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="GramPanchyatAppID" Type="Int32" />
+          <Property Name="YoccClientID" Type="Int32" />
+          <Property Name="YoccFeddbackLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="YoccDndLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LanguageId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DEVICE_DETAILS">
+          <Key>
+            <PropertyRef Name="DEVICE_DETAIL_Id" />
+          </Key>
+          <Property Name="DEVICE_DETAIL_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DEVICE_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FCM_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DEVICE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APP_ID" Type="Int32" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" />
+          <Property Name="INSTALL_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE_ATTENDANCE">
+          <Key>
+            <PropertyRef Name="DA_ID" />
+          </Key>
+          <Property Name="DA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_ID" Type="Int32" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" />
+          <Property Name="START_LAT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="START_LONG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="END_LAT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="END_LONG" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DA_START_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="DA_END_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="VT_ID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DA_START_NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DA_END_NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VEHICLE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BATTERY_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TOTAL_KM" Type="Int32" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GOOGLE_API_HIT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="API_KEY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HIT_DATE" Type="DateTime" Precision="0" />
+          <Property Name="HIT_COUNT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOC_ID" />
+          </Key>
+          <Property Name="LOC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APP_ID" Type="Int32" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" />
+          <Property Name="LOC_DATE_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LAT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LONG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LOC_TYPE" Type="Int32" />
+          <Property Name="HOUSEID" Type="Int32" />
+          <Property Name="BATTERY_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DISTANCE" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="IS_OFFLINE" Type="Boolean" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TAX_CATEGORY_TYPE">
+          <Key>
+            <PropertyRef Name="TCAT_ID" />
+          </Key>
+          <Property Name="TCAT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCAT_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TAX_COLLECTION_DETAIL">
+          <Key>
+            <PropertyRef Name="TC_ID" />
+          </Key>
+          <Property Name="TC_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCAT_ID" Type="Int32" Nullable="false" />
+          <Property Name="APP_ID" Type="Int32" Nullable="false" />
+          <Property Name="RECIPT_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TPAY_ID" Type="Int32" />
+          <Property Name="TOTAL_AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RECEIVED_AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="REMAINING_AMOUNT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" Precision="3" />
+          <Property Name="HOUSEID" Type="Int32" Nullable="false" />
+          <Property Name="EMP_LAT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EMP_LONG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ADUM_USER_CODE" Type="Int32" />
+          <Property Name="RECEIVER_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RECEIVER_SIGNATURE_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REMINDER_NEW_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CHEQUE_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CHEQUE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CHEQUE_BANK_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CHEQUE_IMAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TAX_PAYMENT_TYPE">
+          <Key>
+            <PropertyRef Name="TPAY_ID" />
+          </Key>
+          <Property Name="TPAY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TPAY_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="PropertyTaxCollectionCMSMain_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AD_CITY_MST" EntityType="Self.AD_CITY_MST" />
+          <EntitySet Name="AD_CLIENT_DETAIL_MST" EntityType="Self.AD_CLIENT_DETAIL_MST" />
+          <EntitySet Name="AD_CLIENT_MODULE" EntityType="Self.AD_CLIENT_MODULE" />
+          <EntitySet Name="AD_MODULE_MST" EntityType="Self.AD_MODULE_MST" />
+          <EntitySet Name="AD_MODULE_OBJECT" EntityType="Self.AD_MODULE_OBJECT" />
+          <EntitySet Name="AD_MODULE_OBJECT_CONTROL" EntityType="Self.AD_MODULE_OBJECT_CONTROL" />
+          <EntitySet Name="AD_STATE_MST" EntityType="Self.AD_STATE_MST" />
+          <EntitySet Name="AD_TALUKA_MST" EntityType="Self.AD_TALUKA_MST" />
+          <EntitySet Name="AD_USER_LOG_MST" EntityType="Self.AD_USER_LOG_MST" />
+          <EntitySet Name="AD_USER_MODULE" EntityType="Self.AD_USER_MODULE" />
+          <EntitySet Name="AD_USER_MST" EntityType="Self.AD_USER_MST" />
+          <EntitySet Name="AD_USER_ROLE_MST" EntityType="Self.AD_USER_ROLE_MST" />
+          <EntitySet Name="ADMIN_CONTACT" EntityType="Self.ADMIN_CONTACT" />
+          <EntitySet Name="APP_CONNECTION" EntityType="Self.APP_CONNECTION" />
+          <EntitySet Name="APP_DETAILS" EntityType="Self.APP_DETAILS" />
+          <EntitySet Name="DEVICE_DETAILS" EntityType="Self.DEVICE_DETAILS" />
+          <EntitySet Name="EMPLOYEE_ATTENDANCE" EntityType="Self.EMPLOYEE_ATTENDANCE" />
+          <EntitySet Name="GOOGLE_API_HIT" EntityType="Self.GOOGLE_API_HIT" />
+          <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+          <EntitySet Name="TAX_CATEGORY_TYPE" EntityType="Self.TAX_CATEGORY_TYPE" />
+          <EntitySet Name="TAX_COLLECTION_DETAIL" EntityType="Self.TAX_COLLECTION_DETAIL" />
+          <EntitySet Name="TAX_PAYMENT_TYPE" EntityType="Self.TAX_PAYMENT_TYPE" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PropertyTaxCollectionCMSMain_ModelStoreContainer" CdmEntityContainer="PropertyTaxCollectionCMSMain_Entities">
+          <EntitySetMapping Name="AD_CITY_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_CITY_MST">
+              <MappingFragment StoreEntitySet="AD_CITY_MST">
+                <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_CLIENT_DETAIL_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_CLIENT_DETAIL_MST">
+              <MappingFragment StoreEntitySet="AD_CLIENT_DETAIL_MST">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="C_NAME" ColumnName="C_NAME" />
+                <ScalarProperty Name="CLIENT_TITLE" ColumnName="CLIENT_TITLE" />
+                <ScalarProperty Name="C_FIRST_NAME" ColumnName="C_FIRST_NAME" />
+                <ScalarProperty Name="C_MIDDLE_NAME" ColumnName="C_MIDDLE_NAME" />
+                <ScalarProperty Name="C_LAST_NAME" ColumnName="C_LAST_NAME" />
+                <ScalarProperty Name="C_DOB" ColumnName="C_DOB" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="TALUKA_ID" ColumnName="TALUKA_ID" />
+                <ScalarProperty Name="AD_DISTRICT_ID" ColumnName="AD_DISTRICT_ID" />
+                <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+                <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+                <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+                <ScalarProperty Name="COM_ADD1" ColumnName="COM_ADD1" />
+                <ScalarProperty Name="COM_ADD2" ColumnName="COM_ADD2" />
+                <ScalarProperty Name="SMS_PROVIDER_ID" ColumnName="SMS_PROVIDER_ID" />
+                <ScalarProperty Name="REG_DATE" ColumnName="REG_DATE" />
+                <ScalarProperty Name="EXP_DATE" ColumnName="EXP_DATE" />
+                <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_CLIENT_MODULE">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_CLIENT_MODULE">
+              <MappingFragment StoreEntitySet="AD_CLIENT_MODULE">
+                <ScalarProperty Name="AD_CLIENT_MODULE_ID" ColumnName="AD_CLIENT_MODULE_ID" />
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="MODULE_VALUE" ColumnName="MODULE_VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_MODULE_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_MODULE_MST">
+              <MappingFragment StoreEntitySet="AD_MODULE_MST">
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+                <ScalarProperty Name="ADMM_MODULE_CODE" ColumnName="ADMM_MODULE_CODE" />
+                <ScalarProperty Name="ADMM_MODULE_NAME" ColumnName="ADMM_MODULE_NAME" />
+                <ScalarProperty Name="ADMM_STATUS" ColumnName="ADMM_STATUS" />
+                <ScalarProperty Name="ADMM_MOD_SOURCE" ColumnName="ADMM_MOD_SOURCE" />
+                <ScalarProperty Name="SEQ_NO" ColumnName="SEQ_NO" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+                <ScalarProperty Name="IMG_NORMAL" ColumnName="IMG_NORMAL" />
+                <ScalarProperty Name="IMG_ACTIVE" ColumnName="IMG_ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_MODULE_OBJECT">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_MODULE_OBJECT">
+              <MappingFragment StoreEntitySet="AD_MODULE_OBJECT">
+                <ScalarProperty Name="ADMO_OBJECT_ID" ColumnName="ADMO_OBJECT_ID" />
+                <ScalarProperty Name="ADMO_OBJECT_NAME" ColumnName="ADMO_OBJECT_NAME" />
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+                <ScalarProperty Name="ADMO_OBJECT_TYPE" ColumnName="ADMO_OBJECT_TYPE" />
+                <ScalarProperty Name="ADMO_STATUS" ColumnName="ADMO_STATUS" />
+                <ScalarProperty Name="ADMO_SOURCE" ColumnName="ADMO_SOURCE" />
+                <ScalarProperty Name="ADMO_DIS_SRNO" ColumnName="ADMO_DIS_SRNO" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="ADMO_DISPLAY_NAME" ColumnName="ADMO_DISPLAY_NAME" />
+                <ScalarProperty Name="IMG_NORMAL" ColumnName="IMG_NORMAL" />
+                <ScalarProperty Name="IMG_ACTIVE" ColumnName="IMG_ACTIVE" />
+                <ScalarProperty Name="bireport_file" ColumnName="bireport_file" />
+                <ScalarProperty Name="TOOLTIP_DESCIP" ColumnName="TOOLTIP_DESCIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_MODULE_OBJECT_CONTROL">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_MODULE_OBJECT_CONTROL">
+              <MappingFragment StoreEntitySet="AD_MODULE_OBJECT_CONTROL">
+                <ScalarProperty Name="ADMOC_CONTROL_ID" ColumnName="ADMOC_CONTROL_ID" />
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+                <ScalarProperty Name="ADMO_OBJECT_ID" ColumnName="ADMO_OBJECT_ID" />
+                <ScalarProperty Name="CONTROL_NAME" ColumnName="CONTROL_NAME" />
+                <ScalarProperty Name="CONTROL_TYPE" ColumnName="CONTROL_TYPE" />
+                <ScalarProperty Name="CONTROL_SOURCE" ColumnName="CONTROL_SOURCE" />
+                <ScalarProperty Name="CONTROL_STATUS" ColumnName="CONTROL_STATUS" />
+                <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="IMG_NORMAL" ColumnName="IMG_NORMAL" />
+                <ScalarProperty Name="IMG_ACTIVE" ColumnName="IMG_ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_STATE_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_STATE_MST">
+              <MappingFragment StoreEntitySet="AD_STATE_MST">
+                <ScalarProperty Name="STATE_ID" ColumnName="STATE_ID" />
+                <ScalarProperty Name="STATE_NAME" ColumnName="STATE_NAME" />
+                <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_TALUKA_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_TALUKA_MST">
+              <MappingFragment StoreEntitySet="AD_TALUKA_MST">
+                <ScalarProperty Name="TALUKA_ID" ColumnName="TALUKA_ID" />
+                <ScalarProperty Name="TALUKA_NAME" ColumnName="TALUKA_NAME" />
+                <ScalarProperty Name="DISTRICT_ID" ColumnName="DISTRICT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_USER_LOG_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_USER_LOG_MST">
+              <MappingFragment StoreEntitySet="AD_USER_LOG_MST">
+                <ScalarProperty Name="TRNO" ColumnName="TRNO" />
+                <ScalarProperty Name="SERVER_ID" ColumnName="SERVER_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="ADUM_USER_ID" ColumnName="ADUM_USER_ID" />
+                <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+                <ScalarProperty Name="LOGOUT_TIME" ColumnName="LOGOUT_TIME" />
+                <ScalarProperty Name="LOGIN_STATUS" ColumnName="LOGIN_STATUS" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="IP_ADDRESS" ColumnName="IP_ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_USER_MODULE">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_USER_MODULE">
+              <MappingFragment StoreEntitySet="AD_USER_MODULE">
+                <ScalarProperty Name="AD_USER_MODULE_ID" ColumnName="AD_USER_MODULE_ID" />
+                <ScalarProperty Name="ADMO_OBJECT_ID" ColumnName="ADMO_OBJECT_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_USER_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_USER_MST">
+              <MappingFragment StoreEntitySet="AD_USER_MST">
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="SERVER_ID" ColumnName="SERVER_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_ID" ColumnName="ADUM_USER_ID" />
+                <ScalarProperty Name="ADUM_USER_NAME" ColumnName="ADUM_USER_NAME" />
+                <ScalarProperty Name="ADUM_LOGIN_ID" ColumnName="ADUM_LOGIN_ID" />
+                <ScalarProperty Name="ADUM_PASSWORD" ColumnName="ADUM_PASSWORD" />
+                <ScalarProperty Name="ADUM_EMPLOYEE_ID" ColumnName="ADUM_EMPLOYEE_ID" />
+                <ScalarProperty Name="ADUM_DESIGNATION" ColumnName="ADUM_DESIGNATION" />
+                <ScalarProperty Name="ADUM_MOBILE" ColumnName="ADUM_MOBILE" />
+                <ScalarProperty Name="ADUM_EMAIL" ColumnName="ADUM_EMAIL" />
+                <ScalarProperty Name="LOCAL_USER_NAME" ColumnName="LOCAL_USER_NAME" />
+                <ScalarProperty Name="PROFILE_IMAGE" ColumnName="PROFILE_IMAGE" />
+                <ScalarProperty Name="ADUM_FRDT" ColumnName="ADUM_FRDT" />
+                <ScalarProperty Name="ADUM_TODT" ColumnName="ADUM_TODT" />
+                <ScalarProperty Name="ADUM_STATUS" ColumnName="ADUM_STATUS" />
+                <ScalarProperty Name="UPDATE_FLAG" ColumnName="UPDATE_FLAG" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="AD_USER_TYPE_ID" ColumnName="AD_USER_TYPE_ID" />
+                <ScalarProperty Name="MOBILE_ID" ColumnName="MOBILE_ID" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AD_USER_ROLE_MST">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.AD_USER_ROLE_MST">
+              <MappingFragment StoreEntitySet="AD_USER_ROLE_MST">
+                <ScalarProperty Name="ADURM_ID" ColumnName="ADURM_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="ADMOC_CONTROL_ID" ColumnName="ADMOC_CONTROL_ID" />
+                <ScalarProperty Name="ADURM_VIEW" ColumnName="ADURM_VIEW" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+                <ScalarProperty Name="ADMO_OBJECT_ID" ColumnName="ADMO_OBJECT_ID" />
+                <ScalarProperty Name="ADMM_MODULE_ID" ColumnName="ADMM_MODULE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMIN_CONTACT">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.ADMIN_CONTACT">
+              <MappingFragment StoreEntitySet="ADMIN_CONTACT">
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="MOBILE_NO" ColumnName="MOBILE_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APP_CONNECTION">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.APP_CONNECTION">
+              <MappingFragment StoreEntitySet="APP_CONNECTION">
+                <ScalarProperty Name="AppConnectionId" ColumnName="AppConnectionId" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APP_DETAILS">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.APP_DETAILS">
+              <MappingFragment StoreEntitySet="APP_DETAILS">
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="AppName_mar" ColumnName="AppName_mar" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Tehsil" ColumnName="Tehsil" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="Android_GCM_pushNotification_Key" ColumnName="Android_GCM_pushNotification_Key" />
+                <ScalarProperty Name="IsProduction" ColumnName="IsProduction" />
+                <ScalarProperty Name="baseImageUrlCMS" ColumnName="baseImageUrlCMS" />
+                <ScalarProperty Name="baseImageUrl" ColumnName="baseImageUrl" />
+                <ScalarProperty Name="AboutThumbnailURL" ColumnName="AboutThumbnailURL" />
+                <ScalarProperty Name="AboutAppynity" ColumnName="AboutAppynity" />
+                <ScalarProperty Name="AboutTeamDetail" ColumnName="AboutTeamDetail" />
+                <ScalarProperty Name="ContactUsTeamMember" ColumnName="ContactUsTeamMember" />
+                <ScalarProperty Name="HomeSplash" ColumnName="HomeSplash" />
+                <ScalarProperty Name="FAQ" ColumnName="FAQ" />
+                <ScalarProperty Name="ContactUs" ColumnName="ContactUs" />
+                <ScalarProperty Name="basePath" ColumnName="basePath" />
+                <ScalarProperty Name="yoccContact" ColumnName="yoccContact" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Logitude" ColumnName="Logitude" />
+                <ScalarProperty Name="UserProfile" ColumnName="UserProfile" />
+                <ScalarProperty Name="Collection" ColumnName="Collection" />
+                <ScalarProperty Name="HouseQRCode" ColumnName="HouseQRCode" />
+                <ScalarProperty Name="PointQRCode" ColumnName="PointQRCode" />
+                <ScalarProperty Name="HousePDF" ColumnName="HousePDF" />
+                <ScalarProperty Name="PointPDF" ColumnName="PointPDF" />
+                <ScalarProperty Name="Grampanchayat_Pro" ColumnName="Grampanchayat_Pro" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+                <ScalarProperty Name="ForceUpdate" ColumnName="ForceUpdate" />
+                <ScalarProperty Name="APIHit" ColumnName="APIHit" />
+                <ScalarProperty Name="NewFeatures" ColumnName="NewFeatures" />
+                <ScalarProperty Name="ReportEnable" ColumnName="ReportEnable" />
+                <ScalarProperty Name="DumpYardQRCode" ColumnName="DumpYardQRCode" />
+                <ScalarProperty Name="DumpYardPDF" ColumnName="DumpYardPDF" />
+                <ScalarProperty Name="GramPanchyatAppID" ColumnName="GramPanchyatAppID" />
+                <ScalarProperty Name="YoccClientID" ColumnName="YoccClientID" />
+                <ScalarProperty Name="YoccFeddbackLink" ColumnName="YoccFeddbackLink" />
+                <ScalarProperty Name="YoccDndLink" ColumnName="YoccDndLink" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEVICE_DETAILS">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.DEVICE_DETAILS">
+              <MappingFragment StoreEntitySet="DEVICE_DETAILS">
+                <ScalarProperty Name="DEVICE_DETAIL_Id" ColumnName="DEVICE_DETAIL_Id" />
+                <ScalarProperty Name="DEVICE_ID" ColumnName="DEVICE_ID" />
+                <ScalarProperty Name="FCM_ID" ColumnName="FCM_ID" />
+                <ScalarProperty Name="DEVICE_TYPE" ColumnName="DEVICE_TYPE" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="INSTALL_DATE" ColumnName="INSTALL_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEE_ATTENDANCE">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.EMPLOYEE_ATTENDANCE">
+              <MappingFragment StoreEntitySet="EMPLOYEE_ATTENDANCE">
+                <ScalarProperty Name="DA_ID" ColumnName="DA_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="START_LAT" ColumnName="START_LAT" />
+                <ScalarProperty Name="START_LONG" ColumnName="START_LONG" />
+                <ScalarProperty Name="END_LAT" ColumnName="END_LAT" />
+                <ScalarProperty Name="END_LONG" ColumnName="END_LONG" />
+                <ScalarProperty Name="DA_START_DATETIME" ColumnName="DA_START_DATETIME" />
+                <ScalarProperty Name="DA_END_DATETIME" ColumnName="DA_END_DATETIME" />
+                <ScalarProperty Name="VT_ID" ColumnName="VT_ID" />
+                <ScalarProperty Name="DA_START_NOTE" ColumnName="DA_START_NOTE" />
+                <ScalarProperty Name="DA_END_NOTE" ColumnName="DA_END_NOTE" />
+                <ScalarProperty Name="VEHICLE_NUMBER" ColumnName="VEHICLE_NUMBER" />
+                <ScalarProperty Name="BATTERY_STATUS" ColumnName="BATTERY_STATUS" />
+                <ScalarProperty Name="TOTAL_KM" ColumnName="TOTAL_KM" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GOOGLE_API_HIT">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.GOOGLE_API_HIT">
+              <MappingFragment StoreEntitySet="GOOGLE_API_HIT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="API_KEY" ColumnName="API_KEY" />
+                <ScalarProperty Name="EMAIL_ID" ColumnName="EMAIL_ID" />
+                <ScalarProperty Name="HIT_DATE" ColumnName="HIT_DATE" />
+                <ScalarProperty Name="HIT_COUNT" ColumnName="HIT_COUNT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONs">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="LOC_ID" ColumnName="LOC_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="LOC_DATE_TIME" ColumnName="LOC_DATE_TIME" />
+                <ScalarProperty Name="LAT" ColumnName="LAT" />
+                <ScalarProperty Name="LONG" ColumnName="LONG" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="LOC_TYPE" ColumnName="LOC_TYPE" />
+                <ScalarProperty Name="HOUSEID" ColumnName="HOUSEID" />
+                <ScalarProperty Name="BATTERY_STATUS" ColumnName="BATTERY_STATUS" />
+                <ScalarProperty Name="DISTANCE" ColumnName="DISTANCE" />
+                <ScalarProperty Name="IS_OFFLINE" ColumnName="IS_OFFLINE" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAX_CATEGORY_TYPE">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.TAX_CATEGORY_TYPE">
+              <MappingFragment StoreEntitySet="TAX_CATEGORY_TYPE">
+                <ScalarProperty Name="TCAT_ID" ColumnName="TCAT_ID" />
+                <ScalarProperty Name="TCAT_TYPE" ColumnName="TCAT_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAX_COLLECTION_DETAIL">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.TAX_COLLECTION_DETAIL">
+              <MappingFragment StoreEntitySet="TAX_COLLECTION_DETAIL">
+                <ScalarProperty Name="TC_ID" ColumnName="TC_ID" />
+                <ScalarProperty Name="TCAT_ID" ColumnName="TCAT_ID" />
+                <ScalarProperty Name="APP_ID" ColumnName="APP_ID" />
+                <ScalarProperty Name="RECIPT_NO" ColumnName="RECIPT_NO" />
+                <ScalarProperty Name="TPAY_ID" ColumnName="TPAY_ID" />
+                <ScalarProperty Name="TOTAL_AMOUNT" ColumnName="TOTAL_AMOUNT" />
+                <ScalarProperty Name="RECEIVED_AMOUNT" ColumnName="RECEIVED_AMOUNT" />
+                <ScalarProperty Name="REMAINING_AMOUNT" ColumnName="REMAINING_AMOUNT" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="HOUSEID" ColumnName="HOUSEID" />
+                <ScalarProperty Name="EMP_LAT" ColumnName="EMP_LAT" />
+                <ScalarProperty Name="EMP_LONG" ColumnName="EMP_LONG" />
+                <ScalarProperty Name="ADUM_USER_CODE" ColumnName="ADUM_USER_CODE" />
+                <ScalarProperty Name="RECEIVER_NAME" ColumnName="RECEIVER_NAME" />
+                <ScalarProperty Name="RECEIVER_SIGNATURE_IMAGE" ColumnName="RECEIVER_SIGNATURE_IMAGE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="REMINDER_NEW_DATE" ColumnName="REMINDER_NEW_DATE" />
+                <ScalarProperty Name="CHEQUE_NO" ColumnName="CHEQUE_NO" />
+                <ScalarProperty Name="CHEQUE_DATE" ColumnName="CHEQUE_DATE" />
+                <ScalarProperty Name="CHEQUE_BANK_NAME" ColumnName="CHEQUE_BANK_NAME" />
+                <ScalarProperty Name="CHEQUE_IMAGE" ColumnName="CHEQUE_IMAGE" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAX_PAYMENT_TYPE">
+            <EntityTypeMapping TypeName="PropertyTaxCollectionCMSMain_Model.TAX_PAYMENT_TYPE">
+              <MappingFragment StoreEntitySet="TAX_PAYMENT_TYPE">
+                <ScalarProperty Name="TPAY_ID" ColumnName="TPAY_ID" />
+                <ScalarProperty Name="TPAY_TYPE" ColumnName="TPAY_TYPE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

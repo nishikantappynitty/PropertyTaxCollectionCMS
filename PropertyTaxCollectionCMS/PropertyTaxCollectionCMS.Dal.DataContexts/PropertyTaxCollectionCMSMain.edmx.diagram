@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9877e6e14102426da8cbef8cc5c5fa32" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_CITY_MST" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_CLIENT_DETAIL_MST" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_CLIENT_MODULE" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_MODULE_MST" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_MODULE_OBJECT" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_MODULE_OBJECT_CONTROL" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_STATE_MST" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_TALUKA_MST" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_USER_LOG_MST" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_USER_MODULE" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_USER_MST" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.AD_USER_ROLE_MST" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.ADMIN_CONTACT" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.APP_CONNECTION" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.APP_DETAILS" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.DEVICE_DETAILS" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.EMPLOYEE_ATTENDANCE" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.GOOGLE_API_HIT" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.LOCATION" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.TAX_CATEGORY_TYPE" Width="1.5" PointX="6.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.TAX_COLLECTION_DETAIL" Width="1.5" PointX="12.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PropertyTaxCollectionCMSMain_Model.TAX_PAYMENT_TYPE" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

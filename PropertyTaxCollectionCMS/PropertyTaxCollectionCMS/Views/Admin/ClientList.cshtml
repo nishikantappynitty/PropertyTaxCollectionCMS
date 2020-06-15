@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "ClientList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/DatatableGrid/Client.js"></script>
+
+<div class="pcoded-inner-content">
+    <div class="main-body">
+        <div class="page-wrapper">
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <center><div id="snackbar">Some text some message..</div></center>
+                        <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-block">
+                                <div class="dt-responsive table-responsive">
+                                    <a href="Client" type="button" class="btn btn-sm btn-primary float-right" style="margin-left: 10px;">Create</a>
+                                    <table id="datatable" class="table table-striped table-bordered nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>APP ID</th>
+                                                <th>NAME</th>
+                                                <th>STATE</th>
+                                                <th>TEHSIL</th>
+                                                <th>DISTRICT</th>
+                                                <th>APP VERSION</th>
+                                                <th>FORCE UPDATE</th>
+                                                <th>IS ACTIVE</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -135px;
+        /*background-color: #333;*/
+        background: #a00155;
+        box-shadow: 0 12px 20px -10px rgba(34,138,133,0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(34,138,133,0.2);
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 88%;
+        bottom: 65%;
+        font-size: 16px;
+    }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+</style>
+
+
+
