@@ -25,12 +25,12 @@ namespace PropertyTaxCollectionCMS.Controllers
       
         public AccountController()
         {
-            //if (SessionHandler.Current.AppId != 0)
+            if (SessionHandler.Current.AppId != 0)
             {
                 Repository = new Repository();
             }
-            //else
-            //    Redirect("/Account/Login");
+            else
+                Redirect("/Account/Login");
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
