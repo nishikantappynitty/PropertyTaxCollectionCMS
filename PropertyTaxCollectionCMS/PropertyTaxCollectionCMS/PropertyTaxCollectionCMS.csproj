@@ -1838,6 +1838,7 @@
     <Content Include="Content\theme-assets\extra-pages\comming-soon\fonts\ionicons.woff" />
     <Content Include="Content\theme-assets\extra-pages\landingpage\assets\fonts\ionicons.ttf" />
     <Content Include="Content\theme-assets\extra-pages\landingpage\assets\fonts\ionicons.woff" />
+    <None Include="Properties\PublishProfiles\PropertyTaxCollectionCMS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
