@@ -67,6 +67,18 @@ namespace PropertyTaxCollectionCMS.Controllers.Dashboard
             }
         }
 
+        public ActionResult TaxReminderDetailsList()
+        {
+            if (SessionHandler.Current.AppId != 0)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("/Account/Login");
+            }
+        }
+
         [HttpGet]
         public JsonResult getTaxReceiptDetails(int q = -1)
         {
@@ -78,6 +90,13 @@ namespace PropertyTaxCollectionCMS.Controllers.Dashboard
         public JsonResult getTaxPaymentDetails(int q = -1)
         {
             var griddata = Repository.getTaxReceiptDetails(q);
+            return Json(new { data = griddata }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult getTaxReminderDetails(int q = -1)
+        {
+            var griddata = Repository.getTaxReminderDetails(q);
             return Json(new { data = griddata }, JsonRequestBehavior.AllowGet);
         }
     }

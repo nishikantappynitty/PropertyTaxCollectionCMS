@@ -13,7 +13,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
     public interface IRepository
     {
         #region Common
-        DashBoardVM DashBoardDetails();
+        DashBoardVM DashBoardDetails(int AppId);
         List<SelectListItem> GetStateList();
         List<SelectListItem> GetTehsilList();
         List<SelectListItem> GetDistrictList();
@@ -25,9 +25,10 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
         Result ClientSave(ClientVM _client);
         List<ClientVM> getClientDetails();
         ClientVM getClientDetailsByID(int q);
-        List<DashBoardVM> getAttendenceDetailsOnMap();
+        List<DashBoardVM> getAttendenceDetailsOnMap(int AppID);
         List<AttendanceDetailsVM> getAttendenceDetails();
         List<TaxReceiptDetailsVM> getTaxReceiptDetails(int q);
+        List<TaxReceiptDetailsVM> getTaxReminderDetails(int q);
         EmployeeVM Login(EmployeeVM _userinfo);
         AppDetailsVM GetApplicationDetails(int AppId);
     }

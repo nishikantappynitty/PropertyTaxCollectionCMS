@@ -16,18 +16,18 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
     {
         #region Common
 
-        public DashBoardVM DashBoardDetails()
+        public DashBoardVM DashBoardDetails(int AppId)
         {
             DashBoardVM Result = new DashBoardVM();
 
             using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
             {
-                var UserAttendence = db.EMPLOYEE_ATTENDANCE.Where(c => EntityFunctions.TruncateTime(c.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now)).Count();
-                var TotalUser = db.AD_USER_MST.Count();
+                var UserAttendence = db.EMPLOYEE_ATTENDANCE.Where(c => EntityFunctions.TruncateTime(c.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) & c.APP_ID == AppId).Count();
+                var TotalUser = db.AD_USER_MST.Where(c => c.APP_ID ==AppId).Count();
                 
-                var TaxReceipt = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.PAYMENT_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 1).Count();
-                var TaxPayment = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.PAYMENT_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 2).Count();
-                var Reminder = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.REMINDER_NEW_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 3).Count();
+                var TaxReceipt = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.PAYMENT_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 1 & c.APP_ID == AppId).Count();
+                var TaxPayment = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.PAYMENT_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 2 & c.APP_ID == AppId).Count();
+                var Reminder = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.REMINDER_NEW_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.APP_ID == AppId).Count();
 
                 Result.Attendence = UserAttendence + "/" + TotalUser;
                 Result.TaxReceipt = TaxReceipt.ToString();
@@ -381,7 +381,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
             return data;
         }
 
-        public List<DashBoardVM> getAttendenceDetailsOnMap()
+        public List<DashBoardVM> getAttendenceDetailsOnMap(int AppID)
         {
             List<DashBoardVM> Result = new List<DashBoardVM>();
 
@@ -390,7 +390,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
 
                 var UserAttendence = (from EA in db.EMPLOYEE_ATTENDANCE
                                       join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
-                                      where EntityFunctions.TruncateTime(EA.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now)
+                                      where EntityFunctions.TruncateTime(EA.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) & EA.APP_ID == AppID
                                       select new
                                       {
                                           UserName = UM.ADUM_USER_NAME,
@@ -472,6 +472,50 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                                           RECEIVER_NAME = TC.RECEIVER_NAME,
                                           RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
                                       }).ToList();
+
+
+                foreach (var x in sqlData)
+                {
+                    Result.Add(new TaxReceiptDetailsVM()
+                    {
+                        TC_ID = x.TC_ID,
+                        TCAT_ID = x.TCAT_ID,
+                        RECEIPT_NO = x.RECEIPT_NO,
+                        TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
+                        RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
+                        REMAINING_AMOUNT = Convert.ToDecimal(x.REMAINING_AMOUNT),
+                        HOUSEID = x.HOUSEID,
+                        RECEIVER_NAME = x.RECEIVER_NAME,
+                        RECEIVER_SIGNATURE = x.RECEIVER_SIGNATURE,
+                    });
+                }
+            }
+            return Result;
+        }
+
+        public List<TaxReceiptDetailsVM> getTaxReminderDetails(int q)
+        {
+            List<TaxReceiptDetailsVM> Result = new List<TaxReceiptDetailsVM>();
+
+            using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
+            {
+
+                var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
+                                   //join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                               where EntityFunctions.TruncateTime(TC.REMINDER_NEW_DATE) == EntityFunctions.TruncateTime(DateTime.Now) 
+                               select new
+                               {
+
+                                   TC_ID = TC.TC_ID,
+                                   TCAT_ID = TC.TCAT_ID,
+                                   RECEIPT_NO = TC.RECIPT_NO,
+                                   TOTAL_AMOUNT = TC.TOTAL_AMOUNT,
+                                   RECEIVED_AMOUNT = TC.RECEIVED_AMOUNT,
+                                   REMAINING_AMOUNT = TC.REMAINING_AMOUNT,
+                                   HOUSEID = TC.HOUSEID,
+                                   RECEIVER_NAME = TC.RECEIVER_NAME,
+                                   RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
+                               }).ToList();
 
 
                 foreach (var x in sqlData)
