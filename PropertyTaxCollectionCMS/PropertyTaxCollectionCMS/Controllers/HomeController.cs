@@ -27,7 +27,7 @@ namespace PropertyTaxCollectionCMS.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 DashBoardVM _DashBoardVM = new DashBoardVM();
-                _DashBoardVM = Repository.DashBoardDetails();
+                _DashBoardVM = Repository.DashBoardDetails(SessionHandler.Current.AppId);
                 return View(_DashBoardVM);
             }
             else
@@ -41,7 +41,7 @@ namespace PropertyTaxCollectionCMS.Controllers
             if (SessionHandler.Current.AppId != 0)
             {
                 List<DashBoardVM> _DashBoardVM = new List<DashBoardVM>();
-                _DashBoardVM = Repository.getAttendenceDetailsOnMap();
+                _DashBoardVM = Repository.getAttendenceDetailsOnMap(SessionHandler.Current.AppId);
                 //return View(_DashBoardVM);
                 var jsonResult = Json(_DashBoardVM, JsonRequestBehavior.AllowGet);
                 jsonResult.MaxJsonLength = int.MaxValue;

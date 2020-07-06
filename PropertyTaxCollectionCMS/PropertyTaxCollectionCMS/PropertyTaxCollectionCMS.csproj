@@ -198,6 +198,7 @@
     <Content Include="Content\DatatableGrid\Report\AttendenceReport.js" />
     <Content Include="Content\DatatableGrid\State.js" />
     <Content Include="Content\DatatableGrid\TaxPaymentDetailsList.js" />
+    <Content Include="Content\DatatableGrid\TaxReminderDetailsList.js" />
     <Content Include="Content\DatatableGrid\TaxReceiptDetailsList.js" />
     <Content Include="Content\DatatableGrid\Tehsil.js" />
     <Content Include="Content\theme-assets\assets\css\component.css" />
@@ -1892,6 +1893,7 @@
     <Content Include="Views\Dashboard\AttendenceDetailsList.cshtml" />
     <Content Include="Views\Dashboard\TaxReceiptDetailsList.cshtml" />
     <Content Include="Views\Dashboard\TaxPaymentDetailsList.cshtml" />
+    <Content Include="Views\Dashboard\TaxReminderDetailsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
