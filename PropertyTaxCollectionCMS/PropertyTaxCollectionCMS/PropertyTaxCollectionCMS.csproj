@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Master\MasterController.cs" />
+    <Compile Include="Controllers\Report\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1894,6 +1895,7 @@
     <Content Include="Views\Dashboard\TaxReceiptDetailsList.cshtml" />
     <Content Include="Views\Dashboard\TaxPaymentDetailsList.cshtml" />
     <Content Include="Views\Dashboard\TaxReminderDetailsList.cshtml" />
+    <Content Include="Views\Report\AttendenceReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
