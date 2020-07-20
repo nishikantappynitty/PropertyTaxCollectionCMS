@@ -4,6 +4,7 @@
         "pageLength": 10,
         "ajax": {
             "url": "/Dashboard/getTaxReminderDetails?q=3",
+            "order": [[0, "desc"]],
             "tye": "GET",
             "datatype": "json",
         },

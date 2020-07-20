@@ -4,6 +4,7 @@
         "pageLength": 10,
         "ajax": {
             "url": "/Dashboard/getTaxPaymentDetails?q=2",
+            "order": [[0, "desc"]],
             "tye": "GET",
             "datatype": "json",
         },

@@ -5,6 +5,7 @@ using PropertyTaxCollectionCMS.Dal.DataContexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
 
             using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
             {
-                var UserAttendence = db.EMPLOYEE_ATTENDANCE.Where(c => EntityFunctions.TruncateTime(c.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) & c.APP_ID == AppId).Count();
+                var UserAttendence = db.EMPLOYEE_ATTENDANCE.Where(c => EntityFunctions.TruncateTime(c.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) &c.DA_END_DATETIME == null & c.APP_ID == AppId).Count();
                 var TotalUser = db.AD_USER_MST.Where(c => c.APP_ID ==AppId).Count();
                 
                 var TaxReceipt = db.TAX_COLLECTION_DETAIL.Where(c => EntityFunctions.TruncateTime(c.PAYMENT_DATE) == EntityFunctions.TruncateTime(DateTime.Now) & c.TCAT_ID == 1 & c.APP_ID == AppId).Count();
@@ -441,8 +442,8 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                         UserName = x.UserName,
                         StartDate = Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy"),
                         StartTime = Convert.ToDateTime(x.StartDate).ToString("hh:mm tt"),
-                        EndDate = Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy"),
-                        EndTime = Convert.ToDateTime(x.EndDate).ToString("hh:mm tt"),
+                        EndDate = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")),
+                        EndTime = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("hh:mm tt")),
                     });
                 }
             }
@@ -589,5 +590,204 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                 }
             }
         }
+
+        public List<TaxReceiptDetailsVM> getTaxPaymentReport(int q, string fromDate, string toDate)
+        {
+            List<TaxReceiptDetailsVM> Result = new List<TaxReceiptDetailsVM>();
+
+            DateTime _fromDate = DateTime.ParseExact(fromDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _fdate = new DateTime(_fromDate.Year, _fromDate.Month, _fromDate.Day, 00, 00, 00, 000);  //Today at 00:00:00
+            
+            DateTime Dateeee = DateTime.ParseExact(toDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _tdate = new DateTime(Dateeee.Year, Dateeee.Month, Dateeee.Day, 23, 59, 59, 999); // Dateeee.AddDays(1).AddTicks
+
+            using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
+            {
+
+                var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
+                                   //join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                               where TC.PAYMENT_DATE >= _fdate & TC.PAYMENT_DATE < _tdate & TC.TCAT_ID == q
+                               select new
+                               {
+                                   TC_ID = TC.TC_ID,
+                                   TCAT_ID = TC.TCAT_ID,
+                                   RECEIPT_NO = TC.RECIPT_NO,
+                                   TOTAL_AMOUNT = TC.TOTAL_AMOUNT,
+                                   RECEIVED_AMOUNT = TC.RECEIVED_AMOUNT,
+                                   REMAINING_AMOUNT = TC.REMAINING_AMOUNT,
+                                   HOUSEID = TC.HOUSEID,
+                                   RECEIVER_NAME = TC.RECEIVER_NAME,
+                                   RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
+                                   PAYMENT_DATE = TC.PAYMENT_DATE,
+                               }).ToList();
+
+
+                foreach (var x in sqlData)
+                {
+                    Result.Add(new TaxReceiptDetailsVM()
+                    {
+                        TC_ID = x.TC_ID,
+                        TCAT_ID = x.TCAT_ID,
+                        RECEIPT_NO = x.RECEIPT_NO,
+                        TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
+                        RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
+                        REMAINING_AMOUNT = Convert.ToDecimal(x.REMAINING_AMOUNT),
+                        HOUSEID = x.HOUSEID,
+                        RECEIVER_NAME = x.RECEIVER_NAME,
+                        RECEIVER_SIGNATURE = x.RECEIVER_SIGNATURE,
+                        PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy"),
+                    });
+                }
+            }
+            return Result;
+        }
+
+        public List<TaxReceiptDetailsVM> getTaxReceiptReport(int q, string fromDate, string toDate)
+        {
+            List<TaxReceiptDetailsVM> Result = new List<TaxReceiptDetailsVM>();
+
+            DateTime _fromDate = DateTime.ParseExact(fromDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _fdate = new DateTime(_fromDate.Year, _fromDate.Month, _fromDate.Day, 00, 00, 00, 000);  //Today at 00:00:00
+
+            DateTime Dateeee = DateTime.ParseExact(toDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _tdate = new DateTime(Dateeee.Year, Dateeee.Month, Dateeee.Day, 23, 59, 59, 999); // Dateeee.AddDays(1).AddTicks
+
+            using ( PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
+            {
+
+                var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
+                                   //join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                               where TC.PAYMENT_DATE >= _fdate & TC.PAYMENT_DATE < _tdate & TC.TCAT_ID == q
+                               select new
+                               {
+                                   TC_ID = TC.TC_ID,
+                                   TCAT_ID = TC.TCAT_ID,
+                                   RECEIPT_NO = TC.RECIPT_NO,
+                                   TOTAL_AMOUNT = TC.TOTAL_AMOUNT,
+                                   RECEIVED_AMOUNT = TC.RECEIVED_AMOUNT,
+                                   REMAINING_AMOUNT = TC.REMAINING_AMOUNT,
+                                   HOUSEID = TC.HOUSEID,
+                                   RECEIVER_NAME = TC.RECEIVER_NAME,
+                                   RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
+                                   PAYMENT_DATE = TC.PAYMENT_DATE,
+                               }).ToList();
+
+
+                foreach (var x in sqlData)
+                {
+                    Result.Add(new TaxReceiptDetailsVM()
+                    {
+                        TC_ID = x.TC_ID,
+                        TCAT_ID = x.TCAT_ID,
+                        RECEIPT_NO = x.RECEIPT_NO,
+                        PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy"),
+                        TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
+                        RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
+                        REMAINING_AMOUNT = Convert.ToDecimal(x.REMAINING_AMOUNT),
+                        HOUSEID = x.HOUSEID,
+                        RECEIVER_NAME = x.RECEIVER_NAME,
+                        RECEIVER_SIGNATURE = x.RECEIVER_SIGNATURE,
+                        
+                    });
+                }
+            }
+            return Result;
+        }
+
+        public List<TaxReceiptDetailsVM> getTaxReminderReport(int q, string fromDate, string toDate)
+        {
+            List<TaxReceiptDetailsVM> Result = new List<TaxReceiptDetailsVM>();
+
+            DateTime _fromDate = DateTime.ParseExact(fromDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _fdate = new DateTime(_fromDate.Year, _fromDate.Month, _fromDate.Day, 00, 00, 00, 000);  //Today at 00:00:00
+
+            DateTime Dateeee = DateTime.ParseExact(toDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _tdate = new DateTime(Dateeee.Year, Dateeee.Month, Dateeee.Day, 23, 59, 59, 999); // Dateeee.AddDays(1).AddTicks
+
+
+            using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
+            {
+
+                var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
+                                   //join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                               where TC.REMINDER_NEW_DATE >= _fdate & TC.REMINDER_NEW_DATE < _tdate
+                               select new
+                               {
+
+                                   TC_ID = TC.TC_ID,
+                                   TCAT_ID = TC.TCAT_ID,
+                                   RECEIPT_NO = TC.RECIPT_NO,
+                                   TOTAL_AMOUNT = TC.TOTAL_AMOUNT,
+                                   RECEIVED_AMOUNT = TC.RECEIVED_AMOUNT,
+                                   REMAINING_AMOUNT = TC.REMAINING_AMOUNT,
+                                   HOUSEID = TC.HOUSEID,
+                                   RECEIVER_NAME = TC.RECEIVER_NAME,
+                                   RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
+                                   PAYMENT_DATE = TC.PAYMENT_DATE,
+                               }).ToList();
+
+
+                foreach (var x in sqlData)
+                {
+                    Result.Add(new TaxReceiptDetailsVM()
+                    {
+                        TC_ID = x.TC_ID,
+                        TCAT_ID = x.TCAT_ID,
+                        RECEIPT_NO = x.RECEIPT_NO,
+                        TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
+                        RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
+                        REMAINING_AMOUNT = Convert.ToDecimal(x.REMAINING_AMOUNT),
+                        HOUSEID = x.HOUSEID,
+                        RECEIVER_NAME = x.RECEIVER_NAME,
+                        RECEIVER_SIGNATURE = x.RECEIVER_SIGNATURE,
+                        PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy"),
+                    });
+                }
+            }
+            return Result;
+        }
+
+
+        public List<AttendanceDetailsVM> getAttendenceReport(string fromDate, string toDate)
+        {
+            List<AttendanceDetailsVM> Result = new List<AttendanceDetailsVM>();
+
+            DateTime _fromDate = DateTime.ParseExact(fromDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _fdate = new DateTime(_fromDate.Year, _fromDate.Month, _fromDate.Day, 00, 00, 00, 000); 
+
+            DateTime Dateeee = DateTime.ParseExact(toDate, "d/M/yyyy", CultureInfo.InvariantCulture);
+            DateTime _tdate = new DateTime(Dateeee.Year, Dateeee.Month, Dateeee.Day, 23, 59, 59, 999);
+
+            using (PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
+            {
+
+                var UserAttendence = (from EA in db.EMPLOYEE_ATTENDANCE
+                                      join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                                      where EA.DA_START_DATETIME >= _fdate & EA.DA_START_DATETIME < _tdate 
+                                      select new
+                                      {
+                                          UserName = UM.ADUM_USER_NAME,
+                                          StartDate = EA.DA_START_DATETIME,
+                                          EndDate = EA.DA_END_DATETIME,
+                                          InLat = EA.START_LAT,
+                                          InLong = EA.END_LAT,
+                                      }).ToList();
+
+
+                foreach (var x in UserAttendence)
+                {
+                    Result.Add(new AttendanceDetailsVM()
+                    {
+                        UserName = x.UserName,
+                        StartDate = Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy"),
+                        StartTime = Convert.ToDateTime(x.StartDate).ToString("hh:mm tt"),
+                        EndDate = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")),
+                        EndTime = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("hh:mm tt")),
+                    });
+                }
+            }
+            return Result;
+        }
+
     }
 }

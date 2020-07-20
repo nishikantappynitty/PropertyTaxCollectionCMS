@@ -49,6 +49,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -197,6 +199,9 @@
     <Content Include="Content\DatatableGrid\dtable.js" />
     <Content Include="Content\DatatableGrid\Employee.js" />
     <Content Include="Content\DatatableGrid\Report\AttendenceReport.js" />
+    <Content Include="Content\DatatableGrid\Report\TaxPaymentReport.js" />
+    <Content Include="Content\DatatableGrid\Report\TaxReceiptReport.js" />
+    <Content Include="Content\DatatableGrid\Report\TaxReminderReport.js" />
     <Content Include="Content\DatatableGrid\State.js" />
     <Content Include="Content\DatatableGrid\TaxPaymentDetailsList.js" />
     <Content Include="Content\DatatableGrid\TaxReminderDetailsList.js" />
@@ -1896,6 +1901,9 @@
     <Content Include="Views\Dashboard\TaxPaymentDetailsList.cshtml" />
     <Content Include="Views\Dashboard\TaxReminderDetailsList.cshtml" />
     <Content Include="Views\Report\AttendenceReport.cshtml" />
+    <Content Include="Views\Report\TaxReceiptReport.cshtml" />
+    <Content Include="Views\Report\TaxPaymentReport.cshtml" />
+    <Content Include="Views\Report\TaxReminderReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
