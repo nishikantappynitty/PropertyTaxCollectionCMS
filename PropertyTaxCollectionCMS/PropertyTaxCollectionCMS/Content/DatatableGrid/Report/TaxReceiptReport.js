@@ -18,17 +18,15 @@
         },
 
         "columns": [
-             { "data": "ADUM_USER_NAME" },
+              { "data": "ADUM_USER_NAME" },
              { "data": "PAYMENT_DATE" },
-                { "data": "TC_ID" },
-                //{ "data": "TCAT_ID" },
-                { "data": "RECEIPT_NO" },
-                  { "data": "RECEIVER_NAME" },
-                { "data": "TOTAL_AMOUNT" },
-                { "data": "RECEIVED_AMOUNT" },
-                { "data": "REMAINING_AMOUNT" },
-               
-                //{ "data": "RECEIVER_SIGNATURE" },
+             { "data": "HOUSEID" },
+             { "data": "House_Owner_NAME" },
+             //{ "data": "TCAT_ID" },
+             { "data": "RECEIVER_NAME" },
+             { "data": "RECEIPT_NO" },
+             { "data": "TC_ID" },
+             { "data": "RECEIVER_SIGNATURE" },
         ]
     });
 
@@ -59,15 +57,13 @@ function Datatable() {
         "columns": [
              { "data": "ADUM_USER_NAME" },
              { "data": "PAYMENT_DATE" },
-                { "data": "TC_ID" },
-                //{ "data": "TCAT_ID" },
-                { "data": "RECEIPT_NO" },
-                  { "data": "RECEIVER_NAME" },
-                { "data": "TOTAL_AMOUNT" },
-                { "data": "RECEIVED_AMOUNT" },
-                { "data": "REMAINING_AMOUNT" },
-               
-                //{ "data": "RECEIVER_SIGNATURE" },
+             { "data": "HOUSEID" },
+             { "data": "House_Owner_NAME" },
+             //{ "data": "TCAT_ID" },
+             { "data": "RECEIVER_NAME" },
+             { "data": "RECEIPT_NO" },
+             { "data": "TC_ID" },
+             { "data": "RECEIVER_SIGNATURE" },
         ]
     });
 }

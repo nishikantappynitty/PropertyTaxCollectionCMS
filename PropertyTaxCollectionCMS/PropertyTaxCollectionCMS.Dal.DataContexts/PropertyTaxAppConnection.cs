@@ -12,7 +12,7 @@ namespace PropertyTaxCollectionCMS.Dal.DataContexts
         {
             try
             {
-                const string DefaultStringCon = @"metadata=res://*/APPY_PROPERTYTAX_CHILD.csdl|res://*/APPY_PROPERTYTAX_CHILD.ssdl|res://*/APPY_PROPERTYTAX_CHILD.msl;provider=System.Data.SqlClient;provider connection string='";
+                const string DefaultStringCon = @"metadata=res://*/PropertyTaxCollectionCMSChild.csdl|res://*/PropertyTaxCollectionCMSChild.ssdl|res://*/PropertyTaxCollectionCMSChild.msl;provider=System.Data.SqlClient;provider connection string='";
                 const string Data_Source = "data source=";
                 const string Initial_Catlog = ";initial catalog=";
                 const string Security_Info = ";persist security info=True;";

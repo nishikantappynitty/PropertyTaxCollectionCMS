@@ -642,7 +642,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
             return Result;
         }
 
-        public List<TaxReceiptDetailsVM> getTaxReceiptReport(int q, string fromDate, string toDate)
+        public List<TaxReceiptDetailsVM> getTaxReceiptReport(int q, string fromDate, string toDate,int AppId)
         {
             List<TaxReceiptDetailsVM> Result = new List<TaxReceiptDetailsVM>();
 
@@ -656,26 +656,34 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
             {
 
                 PropertyTaxCollectionCMSChild_Entities db1 = new PropertyTaxCollectionCMSChild_Entities(AppId);
-                var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
-                                  join UM in db.AD_USER_MST on TC.ADUM_USER_CODE equals UM.ADUM_USER_CODE 
-                               where TC.PAYMENT_DATE >= _fdate & TC.PAYMENT_DATE < _tdate & TC.TCAT_ID == q
+
+                var house = db1.HouseMasters.ToList();
+
+                var AD_USER_MST = db.AD_USER_MST.ToList();
+
+                var TAX_COLLECTION_DETAIL = db.TAX_COLLECTION_DETAIL.Where(c => c.PAYMENT_DATE >= _fdate & c.PAYMENT_DATE < _tdate & c.TCAT_ID == q).ToList();
+
+                var sqlData = (from TC in TAX_COLLECTION_DETAIL
+                               join UM in AD_USER_MST on TC.ADUM_USER_CODE equals
+                               UM.ADUM_USER_CODE
+                               join HS in house on TC.HOUSEID equals
+                                HS.houseId
                                select new
                                {
                                    ADUM_USER_NAME = UM.ADUM_USER_NAME,
-                                   PAYMENT_DATE = TC.PAYMENT_DATE,        
+                                   PAYMENT_DATE = TC.PAYMENT_DATE,
                                    TC_ID = TC.TC_ID,
                                    TCAT_ID = TC.TCAT_ID,
                                    RECEIPT_NO = TC.RECIPT_NO,
+                                   houseOwner = HS.houseOwner,
                                    TOTAL_AMOUNT = TC.TOTAL_AMOUNT,
                                    RECEIVED_AMOUNT = TC.RECEIVED_AMOUNT,
                                    REMAINING_AMOUNT = TC.REMAINING_AMOUNT,
                                    HOUSEID = TC.HOUSEID,
                                    RECEIVER_NAME = TC.RECEIVER_NAME,
                                    RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
-                                
+
                                }).ToList();
-
-
                 foreach (var x in sqlData)
                 {
                     Result.Add(new TaxReceiptDetailsVM()
@@ -684,6 +692,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                         TC_ID = x.TC_ID,
                         TCAT_ID = x.TCAT_ID,
                         RECEIPT_NO = x.RECEIPT_NO,
+                        House_Owner_NAME=x.houseOwner,
                         PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy hh:mm tt"),
                         TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
                         RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
@@ -784,10 +793,8 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                     Result.Add(new AttendanceDetailsVM()
                     {
                         UserName = x.UserName,
-                        StartDate = Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy"),
-                        StartTime = Convert.ToDateTime(x.StartDate).ToString("hh:mm tt"),
-                        EndDate = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy")),
-                        EndTime = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("hh:mm tt")),
+                        StartDate = Convert.ToDateTime(x.StartDate).ToString("dd/MM/yyyy hh:mm tt"),
+                        EndDate = (x.EndDate == null ? "" : Convert.ToDateTime(x.EndDate).ToString("dd/MM/yyyy hh:mm tt")),                       
                     });
                 }
             }
