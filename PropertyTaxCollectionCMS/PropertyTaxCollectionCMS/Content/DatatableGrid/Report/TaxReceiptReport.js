@@ -2,7 +2,7 @@
 
     var fdate = $('#txt_fdate').val();
     var tdate = $('#txt_tdate').val();
-
+    debugger;
     $('#datatable').DataTable({
         "pageLength": 10,
         "order": [[0, "desc"]],
@@ -18,6 +18,8 @@
         },
 
         "columns": [
+             { "data": "ADUM_USER_NAME" },
+             { "data": "PAYMENT_DATE" },
                 { "data": "TC_ID" },
                 //{ "data": "TCAT_ID" },
                 { "data": "RECEIPT_NO" },
@@ -25,7 +27,7 @@
                 { "data": "TOTAL_AMOUNT" },
                 { "data": "RECEIVED_AMOUNT" },
                 { "data": "REMAINING_AMOUNT" },
-                { "data": "PAYMENT_DATE" },
+               
                 //{ "data": "RECEIVER_SIGNATURE" },
         ]
     });
@@ -55,6 +57,8 @@ function Datatable() {
         },
 
         "columns": [
+             { "data": "ADUM_USER_NAME" },
+             { "data": "PAYMENT_DATE" },
                 { "data": "TC_ID" },
                 //{ "data": "TCAT_ID" },
                 { "data": "RECEIPT_NO" },
@@ -62,7 +66,7 @@ function Datatable() {
                 { "data": "TOTAL_AMOUNT" },
                 { "data": "RECEIVED_AMOUNT" },
                 { "data": "REMAINING_AMOUNT" },
-                { "data": "PAYMENT_DATE" },
+               
                 //{ "data": "RECEIVER_SIGNATURE" },
         ]
     });

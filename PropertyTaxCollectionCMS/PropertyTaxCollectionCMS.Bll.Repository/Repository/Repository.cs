@@ -146,7 +146,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
         }
 
         public Result EmployeeSave(EmployeeVM _Employee)
-        {
+         {
             Result Result = new Result();
             try
             {
@@ -207,7 +207,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                     Result.message = "success";
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Result.message = "error";
             }
@@ -391,7 +391,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
 
                 var UserAttendence = (from EA in db.EMPLOYEE_ATTENDANCE
                                       join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
-                                      where EntityFunctions.TruncateTime(EA.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) & EA.APP_ID == AppID
+                                      where EntityFunctions.TruncateTime(EA.DA_START_DATETIME) == EntityFunctions.TruncateTime(DateTime.Now) & EA.APP_ID == AppID & EA.DA_END_DATETIME==null
                                       select new
                                       {
                                           UserName = UM.ADUM_USER_NAME,
@@ -655,11 +655,14 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
             using ( PropertyTaxCollectionCMSMain_Entities db = new PropertyTaxCollectionCMSMain_Entities())
             {
 
+                PropertyTaxCollectionCMSChild_Entities db1 = new PropertyTaxCollectionCMSChild_Entities(AppId);
                 var sqlData = (from TC in db.TAX_COLLECTION_DETAIL
-                                   //join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
+                                  join UM in db.AD_USER_MST on TC.ADUM_USER_CODE equals UM.ADUM_USER_CODE 
                                where TC.PAYMENT_DATE >= _fdate & TC.PAYMENT_DATE < _tdate & TC.TCAT_ID == q
                                select new
                                {
+                                   ADUM_USER_NAME = UM.ADUM_USER_NAME,
+                                   PAYMENT_DATE = TC.PAYMENT_DATE,        
                                    TC_ID = TC.TC_ID,
                                    TCAT_ID = TC.TCAT_ID,
                                    RECEIPT_NO = TC.RECIPT_NO,
@@ -669,7 +672,7 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                                    HOUSEID = TC.HOUSEID,
                                    RECEIVER_NAME = TC.RECEIVER_NAME,
                                    RECEIVER_SIGNATURE = TC.RECEIVER_SIGNATURE_IMAGE,
-                                   PAYMENT_DATE = TC.PAYMENT_DATE,
+                                
                                }).ToList();
 
 
@@ -677,10 +680,11 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
                 {
                     Result.Add(new TaxReceiptDetailsVM()
                     {
+                        ADUM_USER_NAME = x.ADUM_USER_NAME,
                         TC_ID = x.TC_ID,
                         TCAT_ID = x.TCAT_ID,
                         RECEIPT_NO = x.RECEIPT_NO,
-                        PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy"),
+                        PAYMENT_DATE = Convert.ToDateTime(x.PAYMENT_DATE).ToString("dd/MM/yyyy hh:mm tt"),
                         TOTAL_AMOUNT = Convert.ToDecimal(x.TOTAL_AMOUNT),
                         RECEIVED_AMOUNT = Convert.ToDecimal(x.RECEIVED_AMOUNT),
                         REMAINING_AMOUNT = Convert.ToDecimal(x.REMAINING_AMOUNT),
@@ -763,7 +767,8 @@ namespace PropertyTaxCollectionCMS.Bll.Repository.Repository
 
                 var UserAttendence = (from EA in db.EMPLOYEE_ATTENDANCE
                                       join UM in db.AD_USER_MST on EA.ADUM_USER_CODE equals UM.ADUM_USER_CODE
-                                      where EA.DA_START_DATETIME >= _fdate & EA.DA_START_DATETIME < _tdate 
+                                      where EA.DA_START_DATETIME >= _fdate & EA.DA_START_DATETIME < _tdate
+                                      orderby EA.DA_ID descending
                                       select new
                                       {
                                           UserName = UM.ADUM_USER_NAME,
